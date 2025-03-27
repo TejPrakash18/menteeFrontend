@@ -1,9 +1,9 @@
 const FeatureCard = ({ icon, title, description }) => {
     return (
-      <div className="bg-gray-800 text-white p-8 rounded-2xl w-80 text-center shadow-lg">
+      <div className="bg-gray-800 text-white p-8 rounded-2xl w-80 h-60 shadow-lg">
         <div className="text-orange-400 text-5xl mb-4">{icon}</div>
         <h3 className="text-xl font-extrabold text-orange-400">{title}</h3>
-        <p className="mt-2 text-sm text-gray-300">{description}</p>
+        <p className="mt-2 text-sm text-gray-200">{description}</p>
       </div>
     );
   };
