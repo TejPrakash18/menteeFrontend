@@ -1,11 +1,23 @@
 # React + Vite
 
+## how to clone
+goto the profile and copy github link
+ ```sh
+ git clone repolink
+ ```
+
+## how to run 
+open the project on VS code, open terminal run this cmd
+```sh
+npm run dev
+```
+
 
 
 
 ### Color and Fonts
 #### Color
- Background color: #222831
+Background color: #222831
 
 Cards Color: #393e46
 

@@ -5,7 +5,7 @@ const InstructorCard = ({ image, name }) => {
       <div className="bg-gray-800 text-white p-6 rounded-xl shadow-lg w-80 text-center">
         <img src={image} alt={name} className="w-32 h-32 rounded-full mx-auto mb-4" />
         <h3 className="text-xl font-bold text-orange-400">{name}</h3>
-        <p className="text-gray-300">BCA |</p>
+        <p className="text-gray-300">BCA </p>
       </div>
     );
   };
