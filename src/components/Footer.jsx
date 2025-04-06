@@ -1,10 +1,10 @@
 const Footer = () => {
     return (
-        <div class = "">
+        
       <footer className="bg-gray-900 text-white p-10 border-t-6 border-orange-400">
         <div className="flex justify-around flex-wrap">
           <div>
-            <h3 className="text-orange-400 font-bold text-xl">mentee</h3>
+            <h3 className="text-orange-400 font-extrabold text-3xl ">mentee</h3>
             <p className="text-gray-200 text-sm mt-3 max-w-sm">
               The best place to learn data structures and algorithms, as well as development skills, interview questions. You can also get real interview experiences free of cost.
             </p>
@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      </div>
+    
     );
   };
 
