@@ -10,7 +10,9 @@ const Navbar = () => {
       </div>
       <div className="space-x-6">
         <a href="#" className="text-orange-400 font-semibold">courses</a>
-        <a href="#" className="text-orange-400 font-semibold">compiler</a>
+          <Link to="/compiler">
+              <a href="#" className="text-orange-400 font-semibold">compiler</a>
+          </Link>
         <a href="#" className="text-orange-400 font-semibold">DSA</a>
         <a href="#" className="text-orange-400 font-semibold">project</a>
       </div>
