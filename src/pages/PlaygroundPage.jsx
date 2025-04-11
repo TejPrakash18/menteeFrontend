@@ -15,7 +15,7 @@ export default function PlaygroundPage() {
     return (
         <>
             <Navbar />
-            <div className="min-h-screen bg-gray-900 px-4 py-10 md:px-16">
+            <div className="min-h-screen bg-black px-4 py-10 md:px-16">
                 <div className="max-w-5xl mx-auto">
                     <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Create Playground</h1>
                     <p className="text-white mb-8 text-sm md:text-base">
@@ -27,7 +27,7 @@ export default function PlaygroundPage() {
                             <div
                                 key={lang.id}
                                 onClick={() => navigate(`/compiler/${lang.id}`)}
-                                className="border rounded-2xl shadow-sm hover:bg-blue-500 transition duration-300 p-5 flex items-center gap-4 cursor-pointer bg-gray-800"
+                                className="rounded-2xl shadow-sm hover:bg-blue-500 transition duration-300 p-5 flex items-center gap-4 cursor-pointer bg-gray-800"
                             >
                                 <div className="text-3xl">{lang.icon}</div>
                                 <div>
