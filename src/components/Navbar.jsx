@@ -1,25 +1,29 @@
+import { useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link, useLocation } from 'react-router-dom';
-
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navItems = [
+        {name: 'Compiler', to: '/compiler'},
         { name: 'Courses', to: '/courses' },
-        // { name: 'Compiler', to: '/compiler' },
         { name: 'DSA', to: '/DSA' },
         { name: 'Project', to: '/project' },
     ];
 
     return (
-        <nav className="bg-[#1D1C20] rounded-xl text-white p-4 flex items-center justify-between mx-10 ">
+        <nav className="bg-[#1D1C20] rounded-xl text-white mx-20 px-4 py-3 md:px-10 flex items-center justify-between">
+            {/* Logo */}
             <div className="text-xl font-bold flex items-center gap-2">
                 <img src={logo} alt="Mentee Logo" className="w-8 h-8 rounded-full" />
-                <span className="text-white text-1xl font-extrabold">Mentee</span>
+                <span className="text-white text-lg font-extrabold">Mentee</span>
             </div>
 
-            <div className="flex space-x-6 items-center">
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-6 items-center">
                 {navItems.map((item, index) => {
                     const isActive = location.pathname === item.to;
                     return (
@@ -32,9 +36,11 @@ const Navbar = () => {
                 <span className="relative z-10 transition duration-300 hover:text-sky-400" aria-hidden="true">
                   {item.name}
                 </span>
-                                <span className={`absolute left-0 -bottom-1 w-full h-1 ${
-                                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                                } transition-opacity duration-300`}>
+                                <span
+                                    className={`absolute left-0 -bottom-1 w-full h-1 ${
+                                        isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                                    } transition-opacity duration-300`}
+                                >
                   <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="w-full h-full">
                     <path
                         d="M0 5 Q 5 0 10 5 T 20 5 T 30 5 T 40 5 T 50 5 T 60 5 T 70 5 T 80 5 T 90 5 T 100 5"
@@ -50,14 +56,51 @@ const Navbar = () => {
                 })}
             </div>
 
-            <Link to="/login">
-                <button className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm">
-                    LOGIN
-                </button>
-            </Link>
+            {/* Login Button (Desktop) */}
+            <div className="hidden md:block">
+                <Link to="/login">
+                    <button className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm">
+                        Login
+                    </button>
+                </Link>
+            </div>
+
+            {/* Hamburger Icon */}
+            <div className="md:hidden z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            </div>
+
+            {/* Mobile Menu */}
+            <div
+                className={`md:hidden absolute top-16 left-0 w-82  bg-[#1D1C20] mx-20 my-10 text-white rounded-xl shadow-xl transition-all duration-300 ${
+                    isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 overflow-hidden opacity-0'
+                }`}
+            >
+                <ul className="flex flex-col items-center gap-4 py-4">
+                    {navItems.map((item, index) => (
+                        <li key={index}>
+                            <Link
+                                to={item.to}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={`block text-lg font-medium ${
+                                    location.pathname === item.to ? 'text-sky-400' : 'text-orange-400'
+                                } hover:text-sky-400`}
+                            >
+                                {item.name}
+                            </Link>
+                        </li>
+                    ))}
+                    <li>
+                        <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                            <button className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm">
+                                Login
+                            </button>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </nav>
     );
 };
-
 
 export default Navbar;

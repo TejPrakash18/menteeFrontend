@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-900  px-4">
-            <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-full sm:w-96 space-y-8">
+        <div className="flex items-center justify-center min-h-screen bg-black  px-4">
+            <div className="bg-[#1D1C20] p-10 rounded-lg shadow-lg w-full sm:w-96 space-y-8">
                 <h2 className="text-3xl font-semibold text-center text-white">Register</h2>
                 <form className="space-y-6">
                     {/* Name */}
@@ -12,7 +12,7 @@ const RegisterPage = () => {
                         <input
                             type="text"
                             placeholder="Enter your full name"
-                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-gray-700"
+                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
                         />
                     </div>
 
@@ -22,7 +22,7 @@ const RegisterPage = () => {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-gray-700"
+                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
                         />
                     </div>
 
@@ -32,7 +32,7 @@ const RegisterPage = () => {
                         <input
                             type="password"
                             placeholder="Enter your password"
-                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-gray-700"
+                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
                         />
                     </div>
 
@@ -42,7 +42,7 @@ const RegisterPage = () => {
                         <input
                             type="password"
                             placeholder="Confirm your password"
-                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-gray-700"
+                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
                         />
                     </div>
 

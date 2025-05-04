@@ -23,7 +23,7 @@ const TypingEffect = () => {
         };
     }, []);
 
-    return <span ref={el} className="text-orange-400" />;
+    return <span ref={el} className="text-orange-400 " />;
 };
 
 export default TypingEffect;
