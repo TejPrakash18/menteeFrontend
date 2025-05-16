@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import logo from '../assets/logo.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Simulate login state (replace with your auth logic later)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     const navItems = [
-        {name: 'Compiler', to: '/compiler'},
-        { name: 'Courses', to: '/courses' },
+        { name: 'Compiler', to: '/compiler' },
         { name: 'DSA', to: '/DSA' },
-        { name: 'Project', to: '/project' },
+        { name: 'Projects', to: '/projects' },
     ];
 
     return (
@@ -33,36 +36,46 @@ const Navbar = () => {
                                     isActive ? 'text-sky-400' : 'text-orange-400'
                                 }`}
                             >
-                <span className="relative z-10 transition duration-300 hover:text-sky-400" aria-hidden="true">
-                  {item.name}
-                </span>
+                                <span className="relative z-10 transition duration-300 hover:text-sky-400" aria-hidden="true">
+                                    {item.name}
+                                </span>
                                 <span
                                     className={`absolute left-0 -bottom-1 w-full h-1 ${
                                         isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                                     } transition-opacity duration-300`}
                                 >
-                  <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="w-full h-full">
-                    <path
-                        d="M0 5 Q 5 0 10 5 T 20 5 T 30 5 T 40 5 T 50 5 T 60 5 T 70 5 T 80 5 T 90 5 T 100 5"
-                        stroke="#38bdf8"
-                        strokeWidth="2"
-                        fill="transparent"
-                    />
-                  </svg>
-                </span>
+                                    <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="w-full h-full">
+                                        <path
+                                            d="M0 5 Q 5 0 10 5 T 20 5 T 30 5 T 40 5 T 50 5 T 60 5 T 70 5 T 80 5 T 90 5 T 100 5"
+                                            stroke="#38bdf8"
+                                            strokeWidth="2"
+                                            fill="transparent"
+                                        />
+                                    </svg>
+                                </span>
                             </div>
                         </Link>
                     );
                 })}
             </div>
 
-            {/* Login Button (Desktop) */}
+            {/* Login/Profile Button (Desktop) */}
             <div className="hidden md:block">
-                <Link to="/login">
-                    <button className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm">
+                {isLoggedIn ? (
+                    <button
+                        className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                        onClick={() => navigate('/profile')}
+                    >
+                        Profile
+                    </button>
+                ) : (
+                    <button
+                        className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                        onClick={() => navigate('/login')}
+                    >
                         Login
                     </button>
-                </Link>
+                )}
             </div>
 
             {/* Hamburger Icon */}
@@ -72,7 +85,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-16 left-0 w-82  bg-[#1D1C20] mx-20 my-10 text-white rounded-xl shadow-xl transition-all duration-300 ${
+                className={`md:hidden absolute top-16 left-0 w-82 bg-[#1D1C20] mx-20 my-10 text-white rounded-xl shadow-xl transition-all duration-300 ${
                     isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 overflow-hidden opacity-0'
                 }`}
             >
@@ -91,11 +104,27 @@ const Navbar = () => {
                         </li>
                     ))}
                     <li>
-                        <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                            <button className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm">
+                        {isLoggedIn ? (
+                            <button
+                                onClick={() => {
+                                    navigate('/profile');
+                                    setIsMenuOpen(false);
+                                }}
+                                className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                            >
+                                Profile
+                            </button>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    navigate('/login');
+                                    setIsMenuOpen(false);
+                                }}
+                                className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                            >
                                 Login
                             </button>
-                        </Link>
+                        )}
                     </li>
                 </ul>
             </div>

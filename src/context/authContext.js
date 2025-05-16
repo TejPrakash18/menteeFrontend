@@ -1,0 +1,1 @@
+const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));

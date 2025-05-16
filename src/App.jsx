@@ -10,9 +10,10 @@ import Instructor from "./components/Instructor";
 import Footer from "./components/Footer";
 import RegisterPage from "./pages/RegisterPage";
 import ProjectPage from "./pages/ProjectPage";
-import CoursesPage from "./pages/CoursesPage";
 import DSAPage from "./pages/DSAPage";
 import CompilerPage from "./pages/CompilerPage";
+import UserDashboard from "./pages/UserDashboard"
+import ProjectDetailPage from './pages/ProjectDetailPage'
 
 function App() {
     return (
@@ -22,11 +23,10 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/compiler" element={<CompilerPage />} />
-                <Route path="/courses" element={<CoursesPage />}/>
-                    {/*<Route path="/courses/:id" element={}/>*/}
-                    {/*<Route path="/courses/:id/:name" element={}/>*/}
                 <Route path="/dsa" element={<DSAPage />}/>
-                <Route path="/project" element={<ProjectPage />} />
+                <Route path="/projects" element={<ProjectPage />} />
+                <Route path="/projects/:id" element={<ProjectDetailPage />} />
+                <Route path="/profile" element={<UserDashboard/>}/>
                 <Route
                     path="/"
                     element={
