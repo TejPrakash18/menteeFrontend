@@ -3,33 +3,49 @@ import { useParams } from 'react-router-dom';
 import { getProjectById, markProjectComplete } from '../services/projectService';
 import Navbar from '../components/Navbar';
 
+
 const ProjectDetailPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
+  const [completed, setCompleted] = useState(false); // ✅ Add this line
 
-useEffect(() => {
-  getProjectById(id)
-    .then(res => {
-      console.log('Fetched project:', res.data);
-      if (Array.isArray(res.data)) {
-        setProject(res.data[0]);
-      } else {
-        setProject(res.data);
-      }
-    })
-    .catch(err => console.error(err));
-}, [id]);
-
-
-  const handleMarkComplete = () => {
-    if (!project || !project.projectTitle) {
-      alert('Project data not loaded yet.');
-      return;
-    }
-    markProjectComplete('tej22', project.projectTitle) // Replace 'tej22' as needed
-      .then(() => alert('Marked as Complete!'))
+  useEffect(() => {
+    getProjectById(id)
+      .then(res => {
+        console.log('Fetched project:', res.data);
+        if (Array.isArray(res.data)) {
+          setProject(res.data[0]);
+        } else {
+          setProject(res.data);
+        }
+      })
       .catch(err => console.error(err));
-  };
+  }, [id]);
+
+const handleMarkComplete = async () => {
+  const username = localStorage.getItem('username');
+
+  if (!username || username === 'undefined') {
+    alert('User not logged in. Username is missing in localStorage.');
+    return;
+  }
+
+  if (!project || !project.projectTitle) {
+    alert('Project data not loaded yet.');
+    return;
+  }
+
+  try {
+    await markProjectComplete(username, project.projectTitle);
+    alert('Marked as Complete!');
+    setCompleted(true);
+  } catch (err) {
+    console.error('Error marking project complete:', err);
+    alert('Failed to mark as complete. Please try again.');
+  }
+};
+
+
 
   if (!project) return (
     <div className="flex justify-center items-center h-screen">
@@ -42,19 +58,19 @@ useEffect(() => {
       <Navbar />
       <div className="max-w-5xl mx-auto p-6 space-y-8">
         {/* Project Title and Description */}
-        <header className="bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-600 p-8 rounded-xl shadow-lg text-white">
-          <h1 className="text-5xl font-extrabold drop-shadow-lg">{project.projectTitle}</h1>
+        <header className="bg-indigo-400 p-8 rounded-xl shadow-lg text-white">
+          <h1 className="text-2xl font-semibold drop-shadow-lg">{project.projectTitle}</h1>
           <p className="mt-4 text-lg tracking-wide">{project.description}</p>
         </header>
 
         {/* Difficulty & Technologies */}
       <section className="flex flex-col md:flex-row justify-between items-center gap-6 bg-white rounded-xl shadow-md p-6">
   <div className="text-indigo-700 font-semibold text-lg">
-    <span className="uppercase tracking-wide">Difficulty:</span>{' '}
+    <span className="tracking-wide">Difficulty:</span>{' '}
     {project.difficulty ? project.difficulty : 'N/A'}
   </div>
   <div className="text-gray-700 font-medium text-lg max-w-xl text-center md:text-left">
-    <span className="uppercase tracking-wide text-indigo-600 font-semibold">Technologies:</span>{' '}
+    <span className="tracking-wide text-indigo-600 font-semibold">Technologies:</span>{' '}
     {project.technologies?.length > 0 ? project.technologies.join(', ') : 'No technologies listed'}
   </div>
 </section>
@@ -90,13 +106,17 @@ useEffect(() => {
 
         {/* Mark Complete Button */}
         <div className="flex justify-center">
-          <button
-            onClick={handleMarkComplete}
-            className="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800
-                       text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300"
-          >
-            Mark as Complete
-          </button>
+                  <button
+  onClick={handleMarkComplete}
+  disabled={completed}
+  className={`px-6 py-2 rounded-md text-white font-semibold ${
+    completed ? 'bg-green-500 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
+  }`}
+>
+  {completed ? 'Completed' : 'Mark as Complete'}
+</button>
+
+
         </div>
       </div>
     </>

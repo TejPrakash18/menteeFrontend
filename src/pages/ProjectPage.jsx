@@ -1,11 +1,5 @@
 import Navbar from "../components/Navbar";
 import ProjectCard from "../components/ProjectCard";
-import todo from '../assets/todo.svg'
-import portfolio from '../assets/portfolio.svg'
-import movie from '../assets/movie.svg'
-import quiz from '../assets/quiz.svg'
-import employee from '../assets/employees.svg'
-import job from '../assets/jobPortal.svg'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllProjects } from '../services/projectService';  // Adjust path accordingly

@@ -19,19 +19,19 @@ const RegisterPage = () => {
         });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const result = await authService(formData);
-            console.log("User Registered:", result);
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        const result = await authService.register(formData);
+        console.log("User Registered:", result);
+        alert("Registration successful!");
+        navigate('/login');
+    } catch (error) {
+        console.error("Registration Failed:", error.response?.data || error.message);
+        alert("Registration failed. Please try again.");
+    }
+};
 
-            alert("Registration successful!");
-            navigate('/login');
-        } catch (error) {
-            console.error("Registration Failed:", error.response?.data || error.message);
-            alert("Registration failed. Please try again.");
-        }
-    };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-black px-4">

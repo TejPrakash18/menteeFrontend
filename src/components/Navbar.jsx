@@ -2,14 +2,13 @@ import { useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useAuth } from '../context/AuthContext'; // ✅ Import your AuthContext
 
 const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const { isLoggedIn, username, logoutUser } = useAuth(); //  Use real login state
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    // Simulate login state (replace with your auth logic later)
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const navItems = [
         { name: 'Compiler', to: '/compiler' },
@@ -20,10 +19,10 @@ const Navbar = () => {
     return (
         <nav className="bg-[#1D1C20] rounded-xl text-white mx-20 px-4 py-3 md:px-10 flex items-center justify-between">
             {/* Logo */}
-            <div className="text-xl font-bold flex items-center gap-2">
+            <Link to="/" className="text-xl font-bold flex items-center gap-2">
                 <img src={logo} alt="Mentee Logo" className="w-8 h-8 rounded-full" />
                 <span className="text-white text-lg font-extrabold">Mentee</span>
-            </div>
+            </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 items-center">
@@ -59,15 +58,23 @@ const Navbar = () => {
                 })}
             </div>
 
-            {/* Login/Profile Button (Desktop) */}
-            <div className="hidden md:block">
+            {/* Desktop Profile/Login/Logout */}
+            <div className="hidden md:flex items-center gap-4">
                 {isLoggedIn ? (
-                    <button
-                        className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
-                        onClick={() => navigate('/profile')}
-                    >
-                        Profile
-                    </button>
+                    <>
+                        <button
+                            className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                            onClick={() => navigate('/profile')}
+                        >
+                            Profile
+                        </button>
+                        <button
+                            className="text-red-400 font-semibold hover:underline"
+                            onClick={logoutUser}
+                        >
+                            Logout
+                        </button>
+                    </>
                 ) : (
                     <button
                         className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
@@ -105,19 +112,31 @@ const Navbar = () => {
                     ))}
                     <li>
                         {isLoggedIn ? (
-                            <button
-                                onClick={() => {
-                                    navigate('/profile');
-                                    setIsMenuOpen(false);
-                                }}
-                                className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
-                            >
-                                Profile
-                            </button>
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-orange-300 font-semibold">Hi, {username}</span>
+                                <button
+                                    onClick={() => {
+                                        navigate('/profile');
+                                        setIsMenuOpen(false);
+                                    }}
+                                    className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"
+                                >
+                                    Profile
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        logoutUser();
+                                        setIsMenuOpen(false);
+                                    }}
+                                    className="text-red-400 font-semibold hover:underline"
+                                >
+                                    Logout
+                                </button>
+                            </div>
                         ) : (
                             <button
                                 onClick={() => {
-                                    navigate('/login');
+                                    navigate('/');
                                     setIsMenuOpen(false);
                                 }}
                                 className="bg-orange-500 px-5 py-2 rounded-md text-white font-semibold text-sm"

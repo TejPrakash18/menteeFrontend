@@ -1,29 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { fetchCompletedProjectsCount, fetchDSACompletedCountByDifficulty } from '../services/progressService';
 
 const ProgressBar = () => {
-    const [progress] = useState({
+    const [progress, setProgress] = useState({
         dsa: {
-            total: 110,
+            total: 111,
             basic: 40,
-            easy: 44,
+            easy: 45,
             medium: 26,
-            solvedBasic: 20,
-            solvedEasy: 15,
-            solvedMedium: 10,
+            solvedBasic: 0,
+            solvedEasy: 0,
+            solvedMedium: 0,
         },
-        courses: { total: 12, completed: 4 },
-        projects: { total: 6, completed: 2 },
+        projects: { total: 6, completed: 0 },
     });
 
-    const calcPercentage = (completed, total) => ((completed / total) * 100).toFixed(0);
+    const username = localStorage.getItem("username");
+
+    useEffect(() => {
+        const loadProgressData = async () => {
+            try {
+                const [projectCount, dsaCount] = await Promise.all([
+                    fetchCompletedProjectsCount(username),
+                    fetchDSACompletedCountByDifficulty(username)
+                ]);
+
+                setProgress(prev => ({
+                    ...prev,
+                    dsa: {
+                        ...prev.dsa,
+                        solvedBasic: dsaCount.basic || 0,
+                        solvedEasy: dsaCount.easy || 0,
+                        solvedMedium: dsaCount.medium || 0,
+                    },
+                    projects: {
+                        ...prev.projects,
+                        completed: projectCount || 0,
+                    }
+                }));
+            } catch (error) {
+                console.error("Error loading progress data", error);
+            }
+        };
+
+        if (username) {
+            loadProgressData();
+        }
+    }, [username]);
+
+    const calcPercentage = (completed, total) =>
+        total > 0 ? ((completed / total) * 100).toFixed(0) : 0;
 
     const { basic, easy, medium, solvedBasic, solvedEasy, solvedMedium } = progress.dsa;
     const totalSolved = solvedBasic + solvedMedium + solvedEasy;
 
     return (
         <div className="bg-[#1D1C20] text-white p-4 sm:p-6 md:p-10 font-sans mt-6 rounded-2xl w-full">
-            {/* Progress Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* DSA Progress */}
                 <div className="bg-[#2A2B30] rounded-lg p-6 shadow">
@@ -35,20 +68,20 @@ const ProgressBar = () => {
                         </div>
                     </div>
                     <div className="space-y-4">
-                        {/* Easy */}
+                        {/* Basic */}
                         <div>
                             <div className="flex justify-between text-green-400 bg-[#1f1f1f] px-4 py-2 rounded-md">
-                                <span>basic</span>
+                                <span>Basic</span>
                                 <span>{solvedBasic}/{basic}</span>
                             </div>
                             <div className="w-full h-2 bg-green-900 rounded-full mt-1">
                                 <div
                                     className="h-full bg-green-400 rounded-full"
-                                    style={{ width: `${(solvedBasic / basic) * 100}%` }}
+                                    style={{ width: `${calcPercentage(solvedBasic, basic)}%` }}
                                 ></div>
                             </div>
                         </div>
-                        {/* Medium */}
+                        {/* Easy */}
                         <div>
                             <div className="flex justify-between text-yellow-400 bg-[#1f1f1f] px-4 py-2 rounded-md">
                                 <span>Easy</span>
@@ -57,11 +90,11 @@ const ProgressBar = () => {
                             <div className="w-full h-2 bg-yellow-900 rounded-full mt-1">
                                 <div
                                     className="h-full bg-yellow-400 rounded-full"
-                                    style={{ width: `${(solvedEasy / easy) * 100}%` }}
+                                    style={{ width: `${calcPercentage(solvedEasy, easy)}%` }}
                                 ></div>
                             </div>
                         </div>
-                        {/* Hard */}
+                        {/* Medium */}
                         <div>
                             <div className="flex justify-between text-red-400 bg-[#1f1f1f] px-4 py-2 rounded-md">
                                 <span>Medium</span>
@@ -70,7 +103,7 @@ const ProgressBar = () => {
                             <div className="w-full h-2 bg-red-900 rounded-full mt-1">
                                 <div
                                     className="h-full bg-red-400 rounded-full"
-                                    style={{ width: `${(solvedMedium / medium) * 100}%` }}
+                                    style={{ width: `${calcPercentage(solvedMedium, medium)}%` }}
                                 ></div>
                             </div>
                         </div>
