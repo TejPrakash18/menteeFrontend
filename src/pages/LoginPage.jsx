@@ -55,14 +55,22 @@ const LoginPage = () => {
             Login
           </button>
         </form>
-        <div className="text-center">
-          <p className="text-sm text-white">
-            Don't have an account?{' '}
-            <Link to="/register" className="text-orange-400 font-semibold hover:text-orange-600">
-              Register Here
-            </Link>
-          </p>
-        </div>
+        <div className="text-center space-y-2">
+  <p className="text-sm text-white">
+    Don't have an account?{' '}
+    <Link to="/register" className="text-orange-400 font-semibold hover:text-orange-600">
+      Register Here
+    </Link>
+  </p>
+  
+  <p className="text-sm text-white">
+    Forgot the password?{' '}
+    <Link to="/forgot-password" className="text-orange-400 font-semibold hover:text-blue-600">
+      Forgot Password?
+    </Link>
+  </p>
+</div>
+
       </div>
     </div>
   );

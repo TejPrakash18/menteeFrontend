@@ -16,6 +16,7 @@ const defaultCodeMap = {
     java: `public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, Java!");
+        // write your code here 
     }
 }`,
     cpp: `#include <iostream>
@@ -23,14 +24,18 @@ using namespace std;
 
 int main() {
     cout << "Hello, C++!" << endl;
+    // write you code here
     return 0;
 }`,
-    python: `print("Hello, Python!")`,
-    javascript: `console.log("Hello, JavaScript!");`,
+    python: `print("Hello, Python!")
+    // write your code here`,
+    javascript: `console.log("Hello, JavaScript!");
+    // write your code here`,
     c: `#include <stdio.h>
 
 int main() {
     printf("Hello, C!\\n");
+    // write your code here
     return 0;
 }`,
 };

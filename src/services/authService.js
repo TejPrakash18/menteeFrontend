@@ -40,6 +40,15 @@ const getAvatar = async (username) => {
   return response.data.avatarUrl;
 };
 
+export const forgotPassword = async (email, newPassword) => {
+  const response = await api.post('/auth/forgot-password', {
+    email,
+    newPassword,
+  });
+  return response.data;
+};
+
+
 export default {
   login,
   register,

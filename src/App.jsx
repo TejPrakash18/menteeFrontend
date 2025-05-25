@@ -16,6 +16,7 @@ import UserDashboard from "./pages/UserDashboard"
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import DSAQuestionDetail from "./pages/DSADetailPage";
 import PrivateRoute from './routes/PrivateRoute';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
     return (
@@ -24,7 +25,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
-                
+                <Route path ="/forgot-password" element={<ForgotPassword/>} />             
                 <Route path="/compiler" element={<CompilerPage />} />
                 <Route path="/dsa" element={<DSAPage />}/>
                    <Route path="/dsa/question/:id" element={<DSAQuestionDetail />} />
