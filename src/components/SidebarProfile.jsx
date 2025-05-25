@@ -116,9 +116,9 @@ const SidebarProfile = () => {
             </div>
 
             {/* Personal Info */}
-            <div className="mb-6">
+            <div className="mb-2">
                 <h3 className="text-md font-semibold mb-2 text-sky-400">Personal Information</h3>
-                <div className="text-sm space-y-2 py-5">
+                <div className="text-sm space-y-2 py-3">
                     <p>
                         <span className="text-gray-400">📧</span>{' '}
                         {profile.email}
@@ -163,7 +163,7 @@ const SidebarProfile = () => {
                 ) : (
                     <button
                         onClick={() => setEditing(true)}
-                        className="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded"
+                        className="bg-blue-600 hover:bg-blue-700 px-4 py-1 mt-18 rounded"
                     >
                         Edit
                     </button>
