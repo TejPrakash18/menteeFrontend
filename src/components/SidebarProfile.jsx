@@ -117,14 +117,14 @@ const SidebarProfile = () => {
 
             {/* Personal Info */}
             <div className="mb-2">
-                <h3 className="text-md font-semibold mb-2 text-sky-400">Personal Information</h3>
-                <div className="text-sm space-y-2 py-3">
+                <h3 className="text-md font-semibold mb-1 text-sky-400">Personal Information</h3>
+                <div className="text-sm space-y-2 py-1">
                     <p>
-                        <span className="text-gray-400">📧</span>{' '}
+                        <span className="text-gray-400">Email: </span>{' '}
                         {profile.email}
                     </p>
                     <p>
-                        <span className="text-gray-400">🎓</span>{' '}
+                        <span className="text-gray-400">College: </span>{' '}
                         {editing ? (
                             <input
                                 type="text"
@@ -137,7 +137,20 @@ const SidebarProfile = () => {
                         )}
                     </p>
                     <p>
-                        <span className="text-gray-400">📍</span>{' '}
+                        <span className="text-gray-400">Education: </span>{' '}
+                        {editing ? (
+                            <input
+                                type="text"
+                                className="bg-[#2A2B30] text-white p-1 rounded w-full"
+                                value={profile.education}
+                                onChange={(e) => handleInputChange('education', e.target.value)}
+                            />
+                        ) : (
+                            profile.education
+                        )}
+                    </p>
+                    <p>
+                        <span className="text-gray-400">Location: </span>{' '}
                         {editing ? (
                             <input
                                 type="text"
@@ -163,7 +176,7 @@ const SidebarProfile = () => {
                 ) : (
                     <button
                         onClick={() => setEditing(true)}
-                        className="bg-blue-600 hover:bg-blue-700 px-4 py-1 mt-18 rounded"
+                        className="bg-blue-600 hover:bg-blue-700 px-4 py-1 mt-1 rounded"
                     >
                         Edit
                     </button>

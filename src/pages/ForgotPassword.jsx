@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { forgotPassword } from '../services/authService';
 
 const ForgotPassword = () => {
@@ -6,6 +7,9 @@ const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+
+
+  const navigate = useNavigate();
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -17,6 +21,8 @@ const ForgotPassword = () => {
       setMessage(result);
       setEmail('');
       setNewPassword('');
+      navigate('/login');
+
     } catch (err) {
       setError(err.response?.data || 'Failed to reset password.');
     }
@@ -60,15 +66,6 @@ const ForgotPassword = () => {
             Reset Password
           </button>
         </form>
-
-        <div className="text-center">
-          <p className="text-sm text-white">
-            Back to{' '}
-            <a href="/login" className="text-orange-400 font-semibold hover:text-orange-600">
-              Login
-            </a>
-          </p>
-        </div>
       </div>
     </div>
   );

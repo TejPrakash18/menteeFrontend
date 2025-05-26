@@ -138,12 +138,12 @@ const ProgressBar = () => {
             {/* Footer */}
             <div className="mt-10 text-sm text-gray-400 flex flex-col md:flex-row gap-3 justify-between items-center">
                 <span>© 2025 Tej | Mentee - Smart LMS</span>
-                <a
+                <p>Report Bug: <a
                     href="mailto:tej22upa.dhyay@gmail.com"
                     className="text-orange-400 hover:underline"
                 >
-                    tej22upa.dhyay@gmail.com
-                </a>
+                     tej22upa.dhyay@gmail.com
+                </a></p>
             </div>
         </div>
     );

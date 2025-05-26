@@ -2,7 +2,7 @@ import { useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext'; // ✅ Import your AuthContext
+import { useAuth } from '../context/AuthContext'; 
 
 const Navbar = () => {
     const location = useLocation();
@@ -17,7 +17,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="bg-[#1D1C20] rounded-xl text-white mx-20 px-4 py-3 md:px-10 flex items-center justify-between">
+        <nav className="bg-[#1D1C20] rounded-xl text-white mx-20 sm:mx-18 px-4 py-3 md:px-10  flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="text-xl font-bold flex items-center gap-2">
                 <img src={logo} alt="Mentee Logo" className="w-8 h-8 rounded-full" />
@@ -113,7 +113,7 @@ const Navbar = () => {
                     <li>
                         {isLoggedIn ? (
                             <div className="flex flex-col items-center gap-2">
-                                <span className="text-orange-300 font-semibold">Hi, {username}</span>
+                                {/* <span className="text-orange-300 font-semibold">Hi, {username}</span> */}
                                 <button
                                     onClick={() => {
                                         navigate('/profile');
