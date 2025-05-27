@@ -16,7 +16,6 @@ const defaultCodeMap = {
   java: `public class Main {
     // write your methods here
     public static void main(String[] args) {
-        System.out.println("Hello, Java!");
         // call your methods here
     }
 }`,

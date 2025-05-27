@@ -28,7 +28,7 @@ function App() {
                 <Route path ="/forgot-password" element={<ForgotPassword/>} />             
                 <Route path="/compiler" element={<CompilerPage />} />
                 <Route path="/dsa" element={<DSAPage />}/>
-                   <Route path="/dsa/question/:id" element={<DSAQuestionDetail />} />
+                <Route path="/dsa/question/:id" element={<DSAQuestionDetail />} />
                 <Route path="/projects" element={<ProjectPage />} />
                 <Route path="/projects/:id" element={<ProjectDetailPage />} />
                 <Route

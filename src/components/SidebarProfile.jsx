@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Pencil } from 'lucide-react';
 import userService from '../services/userService';
-
 
 const SidebarProfile = () => {
     const [profile, setProfile] = useState(null);
-    const [editing, setEditing] = useState(false);
     const [avatarUrl, setAvatarUrl] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [newSkill, setNewSkill] = useState('');
 
     useEffect(() => {
@@ -25,7 +25,6 @@ const SidebarProfile = () => {
         };
 
         fetchProfile();
-
     }, []);
 
     const handleInputChange = (field, value) => {
@@ -45,40 +44,29 @@ const SidebarProfile = () => {
     const handleSave = async () => {
         try {
             await userService.updateProfile(profile);
-            setEditing(false);
+            setShowModal(false);
         } catch (error) {
             console.error("Error updating profile", error);
         }
     };
 
-   
-
     if (!profile) return <p className="text-white p-5">Loading profile...</p>;
 
     return (
-        <div className="bg-[#1D1C20] text-white lg:w-100 lg:h-121 p-6 mt-5 rounded-2xl shadow-md">
+        <div className="bg-[#1D1C20] text-white lg:w-100 lg:h-115  p-6 mt-5 rounded-2xl shadow-md">
             {/* Profile Header */}
             <div className="flex items-center gap-4 mb-6">
-          <img
-  src={avatarUrl || 'avatar6.png'}
-  alt="Profile"
-  className="w-16 h-16 rounded-full"
-  onError={(e) => {
-    e.target.onerror = null;
-    e.target.src = '/avatar6.png';
-  }}
-/>
+                <img
+                    src={avatarUrl || 'avatar6.png'}
+                    alt="Profile"
+                    className="w-16 h-16 rounded-full"
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/avatar6.png';
+                    }}
+                />
                 <div>
-                    {editing ? (
-                        <input
-                            type="text"
-                            className="bg-[#2A2B30] text-white p-1 rounded"
-                            value={profile.name}
-                            onChange={(e) => handleInputChange('name', e.target.value)}
-                        />
-                    ) : (
-                        <h2 className="text-lg font-bold">{profile.name}</h2>
-                    )}
+                    <h2 className="text-lg font-bold">{profile.name}</h2>
                     <p className="text-sm text-gray-400">@{profile.username}</p>
                 </div>
             </div>
@@ -96,23 +84,6 @@ const SidebarProfile = () => {
                         </span>
                     ))}
                 </div>
-                {editing && (
-                    <div className="flex gap-2">
-                        <input
-                            type="text"
-                            placeholder="Add a skill"
-                            value={newSkill}
-                            onChange={(e) => setNewSkill(e.target.value)}
-                            className="bg-[#2A2B30] text-white p-1 rounded w-full"
-                        />
-                        <button
-                            onClick={handleAddSkill}
-                            className="bg-sky-500 hover:bg-sky-600 text-white text-xs px-3 rounded"
-                        >
-                            Add
-                        </button>
-                    </div>
-                )}
             </div>
 
             {/* Personal Info */}
@@ -120,68 +91,115 @@ const SidebarProfile = () => {
                 <h3 className="text-md font-semibold mb-1 text-sky-400">Personal Information</h3>
                 <div className="text-sm space-y-2 py-1">
                     <p>
-                        <span className="text-gray-400">Email: </span>{' '}
-                        {profile.email}
+                        <span className="text-gray-400">Email: </span> {profile.email}
                     </p>
                     <p>
-                        <span className="text-gray-400">College: </span>{' '}
-                        {editing ? (
-                            <input
-                                type="text"
-                                className="bg-[#2A2B30] text-white p-1 rounded w-full"
-                                value={profile.college}
-                                onChange={(e) => handleInputChange('college', e.target.value)}
-                            />
-                        ) : (
-                            profile.college
-                        )}
+                        <span className="text-gray-400">College: </span> {profile.college}
                     </p>
                     <p>
-                        <span className="text-gray-400">Education: </span>{' '}
-                        {editing ? (
-                            <input
-                                type="text"
-                                className="bg-[#2A2B30] text-white p-1 rounded w-full"
-                                value={profile.education}
-                                onChange={(e) => handleInputChange('education', e.target.value)}
-                            />
-                        ) : (
-                            profile.education
-                        )}
+                        <span className="text-gray-400">Education: </span> {profile.education}
                     </p>
                     <p>
-                        <span className="text-gray-400">Location: </span>{' '}
-                        {editing ? (
-                            <input
-                                type="text"
-                                className="bg-[#2A2B30] text-white p-1 rounded w-full"
-                                value={profile.location}
-                                onChange={(e) => handleInputChange('location', e.target.value)}
-                            />
-                        ) : (
-                            profile.location
-                        )}
+                        <span className="text-gray-400">Location: </span> {profile.location}
                     </p>
                 </div>
             </div>
 
+            {/* Edit Button */}
             <div className="flex justify-end">
-                {editing ? (
-                    <button
-                        onClick={handleSave}
-                        className="bg-green-600 hover:bg-green-700 px-4 py-1 rounded"
-                    >
-                        Save
-                    </button>
-                ) : (
-                    <button
-                        onClick={() => setEditing(true)}
-                        className="bg-blue-600 hover:bg-blue-700 px-4 py-1 mt-1 rounded"
-                    >
-                        Edit
-                    </button>
-                )}
+                <button
+          onClick={() => setShowModal(true)}
+          className="p-2 rounded-full bg-[#2A2B30] hover:bg-[#3B3C42] border border-gray-700 transition"
+          title="Edit Profile"
+        >
+          <Pencil size={16} className="text-white" />
+        </button>
             </div>
+
+            {/* Modal Dialog for Editing */}
+            {showModal && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+                    <div className="bg-[#1D1C20] text-white p-6 rounded-xl w-11/12 md:w-1/2 lg:w-1/3 shadow-lg">
+                        <h2 className="text-xl mb-4 font-semibold">Edit Profile</h2>
+
+                        <label className="block mb-2">Name:</label>
+                        <input
+                            type="text"
+                            className="bg-[#2A2B30] text-white p-2 rounded w-full mb-3"
+                            value={profile.name}
+                            onChange={(e) => handleInputChange('name', e.target.value)}
+                        />
+
+                        <label className="block mb-2">College:</label>
+                        <input
+                            type="text"
+                            className="bg-[#2A2B30] text-white p-2 rounded w-full mb-3"
+                            value={profile.college}
+                            onChange={(e) => handleInputChange('college', e.target.value)}
+                        />
+
+                        <label className="block mb-2">Education:</label>
+                        <input
+                            type="text"
+                            className="bg-[#2A2B30] text-white p-2 rounded w-full mb-3"
+                            value={profile.education}
+                            onChange={(e) => handleInputChange('education', e.target.value)}
+                        />
+
+                        <label className="block mb-2">Location:</label>
+                        <input
+                            type="text"
+                            className="bg-[#2A2B30] text-white p-2 rounded w-full mb-3"
+                            value={profile.location}
+                            onChange={(e) => handleInputChange('location', e.target.value)}
+                        />
+
+                        {/* Skill Editing */}
+                        <label className="block mt-4 mb-2">Add Skill:</label>
+                        <div className="flex gap-2 mb-3">
+                            <input
+                                type="text"
+                                placeholder="Add a skill"
+                                value={newSkill}
+                                onChange={(e) => setNewSkill(e.target.value)}
+                                className="bg-[#2A2B30] text-white p-2 rounded w-full"
+                            />
+                            <button
+                                onClick={handleAddSkill}
+                                className="bg-sky-500 hover:bg-sky-600 text-white px-3 py-1 rounded text-sm"
+                            >
+                                Add
+                            </button>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            {(profile.skills || []).map((skill, idx) => (
+                                <span
+                                    key={idx}
+                                    className="bg-[#2A2B30] px-3 py-1 text-xs rounded-full whitespace-nowrap"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div className="flex justify-end gap-2 mt-4">
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleSave}
+                                className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
