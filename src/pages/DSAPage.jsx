@@ -100,7 +100,7 @@ const DSAPage = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[#1c1c1e] text-white p-6 rounded-2xl mt-3 mx-20">
+      <div className="min-h-screen bg-[#1c1c1e] text-white p-6 rounded-2xl mx-20 mt-5 ">
         <h1 className="text-xl font-bold mb-6 text-center">DSA Question Tracker</h1>
         <div className="space-y-4">
           {groupedData.map((category, catIndex) => {

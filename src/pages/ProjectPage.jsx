@@ -26,7 +26,7 @@ const Project = () => {
      return (
         <>
             <Navbar />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 mx-18">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 mx-18 mt-10">
                 {projects.map((proj, idx) => (
                     <div key={idx} onClick={() => handleClick(proj.id)} className="cursor-pointer">
                         <ProjectCard

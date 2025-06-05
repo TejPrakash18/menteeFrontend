@@ -1,77 +1,116 @@
-import { FaLinkedin, FaTimesCircle, FaInstagram, FaYoutube } from 'react-icons/fa';
+  import {
+    FaLinkedinIn,
+    FaInstagram,
+    FaYoutube,
+    FaTwitter,
+  } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-      <footer className="bg-[#111111] text-white px-6 py-10 border-t-4 border-orange-400">
-        {/* Main Grid */}
-        <div className="flex flex-col md:flex-row md:justify-between gap-10 max-w-7xl mx-auto">
-          {/* Logo + Description + Icons */}
-          <div className="max-w-md">
-            <h1 className="text-4xl font-extrabold mb-2">
-              Mentee<span className="text-orange-400">*</span>
-            </h1>
-            <p className="text-sm text-gray-400 mb-5">
-              The best place to learn data structures, algorithms, most asked coding interview questions, and real project experiences free of cost.
-            </p>
-            <div className="flex gap-4 text-xl">
-              <FaLinkedin className="hover:text-orange-400 cursor-pointer" />
-              <FaTimesCircle className="hover:text-orange-400 cursor-pointer" />
-              <FaInstagram className="hover:text-orange-400 cursor-pointer" />
-              <FaYoutube className="hover:text-orange-400 cursor-pointer" />
+  const Footer = () => {
+    return (
+      <footer className="relative bg-[#0d0d0d] text-white py-14 px-6">
+        {/* Background Blur Glow Effect */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-orange-500/10 to-purple-700/10 rounded-2xl blur-2xl opacity-60" />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Top Grid */}
+          <div className="flex flex-col md:flex-row justify-between items-start gap-12 border-b border-gray-700 pb-12">
+            {/* Brand */}
+            <div className="max-w-md space-y-5">
+              <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent animate-pulse">
+                Mentee<span className="text-orange-400">*</span>
+              </h1>
+              <p className="text-sm text-gray-400">
+                Your one-stop platform for mastering DSA, interview prep, and real-world dev projects — free, forever.
+              </p>
+              <div className="flex gap-4 mt-4">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white/10 hover:bg-orange-500 text-white p-3 rounded-full transition transform hover:-translate-y-1 duration-300"
+                >
+                  <FaLinkedinIn size={18} />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white/10 hover:bg-pink-500 text-white p-3 rounded-full transition transform hover:-translate-y-1 duration-300"
+                >
+                  <FaInstagram size={18} />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white/10 hover:bg-red-500 text-white p-3 rounded-full transition transform hover:-translate-y-1 duration-300"
+                >
+                  <FaYoutube size={18} />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white/10 hover:bg-blue-500 text-white p-3 rounded-full transition transform hover:-translate-y-1 duration-300"
+                >
+                  <FaTwitter size={18} />
+                </a>
+              </div>
+            </div>
+
+            {/* Links Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 text-sm w-full">
+              <div>
+                <h3 className="text-orange-400 font-semibold text-lg mb-3">Company</h3>
+                <ul className="text-gray-400 space-y-2">
+                  <li><a href="#" className="hover:text-white transition">About Us</a></li>
+                  <li><a href="#" className="hover:text-white transition">Contact</a></li>
+                  <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+                  <li><a href="#" className="hover:text-white transition">Terms</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-orange-400 font-semibold text-lg mb-3">Quick Access</h3>
+                <ul className="text-gray-400 space-y-2">
+                  <li><a href="#" className="hover:text-white transition">DSA Sheet</a></li>
+                  <li><a href="#" className="hover:text-white transition">Blogs</a></li>
+                  <li><a href="#" className="hover:text-white transition">CS Subjects</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-orange-400 font-semibold text-lg mb-3">DSA Sheets</h3>
+                <ul className="text-gray-400 space-y-2">
+                  <li><a href="#" className="hover:text-white transition">SDE Sheet</a></li>
+                  <li><a href="#" className="hover:text-white transition">Core Sheet</a></li>
+                  <li><a href="#" className="hover:text-white transition">Projects</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-orange-400 font-semibold text-lg mb-3">Playlists</h3>
+                <ul className="text-gray-400 space-y-2">
+                  <li><a href="#" className="hover:text-white transition">Array Series</a></li>
+                  <li><a href="#" className="hover:text-white transition">Graph Series</a></li>
+                  <li><a href="#" className="hover:text-white transition">DP Series</a></li>
+                  <li><a href="#" className="hover:text-white transition">LinkedList Series</a></li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* Grid for Links */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-sm">
-            {/* Company */}
-            <div>
-              <h3 className="text-orange-400 font-bold text-lg">Company</h3>
-              <ul className="text-gray-300 mt-2 space-y-1">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms and Conditions</a></li>
-              </ul>
+            {/* Bottom Text */}
+            <div className="mt-10 text-center text-xs text-gray-500">
+              © 2025 <span className="text-white font-semibold">Mentee</span>. All rights reserved.
             </div>
+          
 
-            {/* Quick Access */}
-            <div>
-              <h3 className="text-orange-400 font-bold text-lg">Quick Access</h3>
-              <ul className="text-gray-300 mt-2 space-y-1">
-                <li><a href="#">DSA Sheet</a></li>
-                <li><a href="#">Technical Blogs</a></li>
-                <li><a href="#">CS Subjects</a></li>
-              </ul>
-            </div>
 
-            {/* DSA Sheets */}
-            <div>
-              <h3 className="text-orange-400 font-bold text-lg">DSA Sheets</h3>
-              <ul className="text-gray-300 mt-2 space-y-1">
-                <li><a href="#">SDE Sheet</a></li>
-                <li><a href="#">SDE Core Sheet</a></li>
-                <li><a href="#">Project's Sheet</a></li>
-              </ul>
-            </div>
 
-            {/* DSA Playlist */}
-            <div>
-              <h3 className="text-orange-400 font-bold text-lg">DSA Playlist</h3>
-              <ul className="text-gray-300 mt-2 space-y-1">
-                <li><a href="#">Array Series</a></li>
-                <li><a href="#">Graph Series</a></li>
-                <li><a href="#">DP Series</a></li>
-                <li><a href="#">LinkedList Series</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
-
-        {/* Bottom Text */}
-        <hr className="mt-10 border-gray-600" />
-        <p className="text-center text-sm text-gray-500 mt-5">© 2025 MENTEE. All rights reserved.</p>
       </footer>
-  );
-};
+    );
+  };
 
-export default Footer;
+  export default Footer;

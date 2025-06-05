@@ -1,35 +1,38 @@
 const FeatureCard = ({ icon, title, description, borderColor, textColor }) => {
     return (
-        <div className={`bg-gray-800 border-2 ${borderColor} rounded-xl w-72 p-6 relative text-white shadow-lg`}>
+        <div className={`bg-[#1F2937] border-t-4 ${borderColor} rounded-2xl w-full sm:w-[18rem] p-6 flex flex-col items-start text-white shadow-md hover:scale-105 transform transition duration-300 ease-in-out`}>
             <div className={`text-5xl mb-4 ${textColor}`}>{icon}</div>
-            <h3 className={`text-xl font-bold ${textColor}`}>{title}</h3>
-            <p className="text-sm text-gray-300 mt-3">{description}</p>
+            <h3 className={`text-lg sm:text-xl font-bold ${textColor}`}>{title}</h3>
+            <p className="text-sm text-gray-300 mt-2 leading-relaxed">{description}</p>
         </div>
     );
 };
 
 const FeaturesSection = () => {
     return (
-        <section className=" text-white p-16 text-center">
-            <div className="flex justify-center gap-8 mt-10 flex-wrap">
+        <section className="w-full px-4 sm:px-6 lg:px-20 py-16 text-white bg-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 bg-gradient-to-r from-sky-400 to-pink-500 text-transparent bg-clip-text">
+                Why Choose Us?
+            </h2>
+            <div className="flex flex-wrap justify-center gap-8">
                 <FeatureCard
                     icon="📄"
                     title="DSA Sheet"
-                    description="Boost your DSA skill with our handy cheat sheet"
+                    description="Boost your DSA skills with our structured and powerful cheat sheet."
                     borderColor="border-sky-500"
                     textColor="text-sky-400"
                 />
                 <FeatureCard
                     icon="⚙️"
                     title="CS Subjects"
-                    description="Demystify CS topics with our easy-to-understand guide"
+                    description="Explore CS fundamentals with simplified, digestible explanations."
                     borderColor="border-green-500"
                     textColor="text-green-400"
                 />
                 <FeatureCard
                     icon="📑"
                     title="Projects"
-                    description="Enhance your development skills with these engaging blogs"
+                    description="Enhance your portfolio and skills with impactful project ideas."
                     borderColor="border-pink-500"
                     textColor="text-pink-400"
                 />

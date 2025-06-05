@@ -17,7 +17,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="bg-[#1D1C20] rounded-xl text-white mx-20 sm:mx-18 px-4 py-3 md:px-10  flex items-center justify-between">
+        <nav className="bg-[#1D1C20] rounded-xl text-white  px-4 py-3 flex items-center justify-between mx-20">
             {/* Logo */}
             <Link to="/" className="text-xl font-bold flex items-center gap-2">
                 <img src={logo} alt="Mentee Logo" className="w-8 h-8 rounded-full" />
@@ -92,7 +92,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-16 left-0 w-82 bg-[#1D1C20] mx-20 my-10 text-white rounded-xl shadow-xl transition-all duration-300 ${
+                className={`md:hidden absolute top-16 left-0 w-full bg-[#1D1C20]  text-white rounded-xl shadow-xl transition-all duration-300 ${
                     isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 overflow-hidden opacity-0'
                 }`}
             >
