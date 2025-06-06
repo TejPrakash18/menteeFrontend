@@ -7,10 +7,10 @@ const TypingEffect = () => {
     useEffect(() => {
         const typed = new Typed(el.current, {
             strings: [
-                "CS Subjects",
-                "Technical Blogs",
-                "Project tutorials",
-                "DSA Sheet",
+                'DSA Sheet',
+                'Technical Blogs',
+                'Compilers',
+                'Mock Interviews'
             ],
             loop: true,
             typeSpeed: 100,

@@ -11,9 +11,7 @@ const FeatureCard = ({ icon, title, description, borderColor, textColor }) => {
 const FeaturesSection = () => {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-20 py-16 text-white bg-transparent">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 bg-gradient-to-r from-sky-400 to-pink-500 text-transparent bg-clip-text">
-                Why Choose Us?
-            </h2>
+            
             <div className="flex flex-wrap justify-center gap-8">
                 <FeatureCard
                     icon="📄"

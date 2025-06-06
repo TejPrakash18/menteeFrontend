@@ -17,6 +17,8 @@ import ProjectDetailPage from './pages/ProjectDetailPage'
 import DSAQuestionDetail from "./pages/DSADetailPage";
 import PrivateRoute from './routes/PrivateRoute';
 import ForgotPassword from './pages/ForgotPassword';
+import FAQPage from './pages/FAQPage'
+
 
 function App() {
     return (
@@ -47,6 +49,8 @@ function App() {
                             <HeroSection />
                             <WhyChooseUs />
                             <Instructor />
+                           
+                            <FAQPage/>
                             <Footer />
                         </>
                     }

@@ -12,12 +12,22 @@ const RegisterPage = () => {
 
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
+const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "name") {
+        const onlyLettersAndSpaces = /^[A-Za-z\s]*$/;
+        if (!onlyLettersAndSpaces.test(value)) {
+            return; // Block if input contains digits or special characters
+        }
+    }
+
+    setFormData({
+        ...formData,
+        [name]: value,
+    });
+};
+
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,14 +52,15 @@ const handleSubmit = async (e) => {
                     <div>
                         <label className="block text-sm font-medium text-white">Name</label>
                         <input
-                            name="name"
-                            type="text"
-                            placeholder="Enter your full name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
-                            required
-                        />
+    name="name"
+    type="text"
+    placeholder="Enter your full name"
+    value={formData.name}
+    onChange={handleChange}
+    className="w-full px-4 py-3 mt-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder-orange-400 text-white bg-[#1D1C20]"
+    required
+/>
+
                     </div>
 
                     <div>

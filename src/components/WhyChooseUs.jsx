@@ -2,10 +2,10 @@ const WhyChooseUs = () => {
     return (
         <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-4 sm:px-10 lg:px-20">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-orange-400 to-yellow-300 text-transparent bg-clip-text mb-4">
+                <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-orange-400 to-yellow-300 text-transparent bg-clip-text mb-4 z-0">
                     Why Choose Us?
                 </h2>
-                <p className="text-lg sm:text-xl text-gray-300 font-medium mb-10 max-w-2xl mx-auto">
+                <p className="text-lg sm:text-xl text-gray-300 font-medium mb-10 max-w-2xl mx-auto mt-10">
                     Unlock Your Potential with Our Comprehensive Learning Approach
                 </p>
 

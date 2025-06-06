@@ -18,7 +18,6 @@ const ProjectDetailPage = () => {
         const data = Array.isArray(res.data) ? res.data[0] : res.data;
         setProject(data);
 
-        // Find all code section indices
         const codeIndices = data.sections
           ?.map((s, index) => (s.language ? index : null))
           .filter(index => index !== null);
@@ -27,17 +26,14 @@ const ProjectDetailPage = () => {
       .catch(err => console.error(err));
   }, [id]);
 
-  // Conclusion section index
   const conclusionIndex = project?.sections?.findIndex(section =>
     section.title.toLowerCase().includes('conclusion')
   );
 
-  // Check if all code sections have been visited
   const allCodeSectionsVisited =
-    codeSectionIndices.length > 0 &&
+    codeSectionIndices.length > 1 &&
     codeSectionIndices.every(index => visitedCodeSections.has(index));
 
-  // Handle section click
   const handleTopicClick = (index) => {
     setSelectedSectionIndex(index);
 
@@ -46,10 +42,9 @@ const ProjectDetailPage = () => {
       setVisitedCodeSections(prev => new Set(prev).add(index));
     }
 
-    // Scroll to section smoothly
     setTimeout(() => {
       sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    }, 1000);
   };
 
   const handleMarkComplete = async () => {
@@ -84,8 +79,7 @@ const ProjectDetailPage = () => {
     <>
       <Navbar />
       <div className="flex min-h-screen p-15 rounded-2xl">
-        {/* Sidebar */}
-        <aside className="w-64 h-160 bg-[#1e1e22] p-4  rounded-2xl">
+        <aside className="w-64 h-160 bg-[#1e1e22] p-4 rounded-2xl">
           <h2 className="text-lg font-bold mb-4 text-orange-400 m-5 rounded-2xl">Documentation</h2>
           <ul className="space-y-2">
             {project.sections?.map((section, idx) => (
@@ -105,15 +99,12 @@ const ProjectDetailPage = () => {
           </ul>
         </aside>
 
-        {/* Main Content */}
         <main className="flex-1 p-6 space-y-6 bg-[#1e1e22] rounded-2xl ml-10">
-          {/* Project Info */}
           <header className="bg-blue-400 p-6 rounded-xl shadow-lg text-white">
             <h1 className="text-2xl font-bold">{project.projectTitle}</h1>
             <p className="mt-2">{project.description}</p>
           </header>
 
-          {/* Difficulty and Technologies */}
           <section className="bg-[#2c2c2e] p-4 rounded-md shadow-md flex justify-between items-center">
             <div className="text-orange-400 font-semibold">
               Difficulty: {project.difficulty || 'N/A'}
@@ -126,7 +117,6 @@ const ProjectDetailPage = () => {
             </div>
           </section>
 
-          {/* Documentation Section */}
           {project.sections && project.sections[selectedSectionIndex] && (
             <section
               key={selectedSectionIndex}
@@ -151,7 +141,6 @@ const ProjectDetailPage = () => {
                 </p>
               )}
 
-              {/* Show Mark as Done button only in Conclusion and if all code sections visited */}
               {selectedSectionIndex === conclusionIndex && allCodeSectionsVisited && (
                 <div className="flex justify-center mt-10">
                   <button

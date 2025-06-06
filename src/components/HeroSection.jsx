@@ -15,9 +15,9 @@ const HeroSection = () => {
                 Advance Your Career with <TypingEffect />
             </p>
 
-            <p className="pt-10 text-center text-white text-base font-normal ">          
+            {/* <p className="pt-10 text-center text-white text-base font-normal ">          
                 Master your Brain with curated resources and expert guidance - Learn the Skills that set you apart and join the Top coders
-            </p>
+            </p> */}
             {/* Features Section */}
             <div className="mt-10">
                 <FeaturesSection />

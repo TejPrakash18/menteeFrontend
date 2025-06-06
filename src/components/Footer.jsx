@@ -7,17 +7,18 @@
 
   const Footer = () => {
     return (
-      <footer className="relative bg-[#0d0d0d] text-white py-14 px-6">
+      <footer className="relative bg-[#0d0d0d] text-white py-14 px-6 mt-15">
         {/* Background Blur Glow Effect */}
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-orange-500/10 to-purple-700/10 rounded-2xl blur-2xl opacity-60" />
+
 
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Top Grid */}
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 border-b border-gray-700 pb-12">
             {/* Brand */}
             <div className="max-w-md space-y-5">
-              <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent animate-pulse">
-                Mentee<span className="text-orange-400">*</span>
+              <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-500 text-xl font-bold  tracking-wide animate-pulse">
+                mentee
               </h1>
               <p className="text-sm text-gray-400">
                 Your one-stop platform for mastering DSA, interview prep, and real-world dev projects — free, forever.
@@ -102,7 +103,7 @@
 
             {/* Bottom Text */}
             <div className="mt-10 text-center text-xs text-gray-500">
-              © 2025 <span className="text-white font-semibold">Mentee</span>. All rights reserved.
+              © 2025 <span className="text-white font-semibold">mentee</span>. All righ ts reserved.
             </div>
           
 

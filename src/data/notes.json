@@ -1,0 +1,340 @@
+[
+  {
+    "category": "Cpp",
+    "title": "Getting Started: Coding on C++ Compilers Online",
+    "sections": [
+      {
+        "title": "Why Learn C++?",
+        "list": [
+          {
+            "title": "Versatility",
+            "content": "C++ is a versatile language used in system programming, game development, web applications, and embedded systems."
+          },
+          {
+            "title": "Community and Support",
+            "content": "C++ has an active community with extensive documentation, libraries, and forums for learners and professionals alike."
+          },
+          {
+            "title": "Job Opportunities",
+            "content": "C++ developers are in demand across the tech industry, making it a valuable language to learn for career growth."
+          }
+        ]
+      },
+      {
+        "title": "Creating Your First Program",
+        "steps": [
+          "Navigate to the Coding Shuttle C++ Compiler.",
+          "Start a new project on the compiler page.",
+          "In the editor, type the following code:",
+          "Press the 'Run' or 'Compile and Execute' button to see the output.",
+          "You should see: Hello, world!"
+        ],
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    cout << \"Hello, world!\";\n    return 0;\n}"
+      },
+      {
+        "title": "Tips for Beginners",
+        "tips": [
+          "Ensure you're using the correct C++ version supported by the compiler.",
+          "Start with simple programs to get comfortable with the syntax.",
+          "Join online communities and use tutorials and documentation for help."
+        ]
+      },
+      {
+        "title": "Debugging on the Fly",
+        "steps": [
+          "Read error messages carefully to identify the issue.",
+          "Insert breakpoints to inspect variables and flow.",
+          "Step through code to trace behavior line by line.",
+          "Fix the root cause and rerun the program."
+        ]
+      },
+      {
+        "title": "C++ Syntax: Loops",
+        "content": "Loops are used to repeat a block of code. C++ supports for, while, and do-while loops.",
+        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    cout << i << \"\\n\";\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    cout << i << \"\\n\";\n    i++;\n}\n\n// Do-while loop\ndo {\n    cout << i << \"\\n\";\n    i++;\n} while(i < 10);"
+      },
+      {
+        "title": "C++ Syntax: Conditional Statements",
+        "content": "Conditional statements help make decisions in code using if, else if, and else.",
+        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code if all conditions are false\n}"
+      },
+      {
+        "title": "C++ Syntax: Functions",
+        "content": "Functions help modularize code and avoid repetition. They have a return type, name, and parameters.",
+        "code": "int add(int a, int b) {\n    return a + b;\n}"
+      }
+    ]
+  },
+  {
+    "category": "Java",
+    "title": "Getting Started: Coding on Java Compilers Online",
+    "sections": [
+      {
+        "title": "What is Java?",
+        "content": "Java is a high-level, class-based, and object-oriented programming language. With its 'Write Once, Run Anywhere' (WORA) capability, Java code can run on any system equipped with the Java Virtual Machine (JVM), offering platform independence. It's widely used for web, mobile, and enterprise applications."
+      },
+      {
+        "title": "Why Learn Java?",
+        "list": [
+          {
+            "title": "Versatility",
+            "content": "Java is used across Android development, desktop applications, web apps using Servlets/JSPs, and enterprise software."
+          },
+          {
+            "title": "Community and Support",
+            "content": "Java has a huge global developer community, offering support via forums, tutorials, and libraries."
+          },
+          {
+            "title": "Job Opportunities",
+            "content": "Java developers are consistently in demand in tech companies of all sizes, ensuring job security and growth."
+          }
+        ]
+      },
+      {
+        "title": "Creating Your First Program",
+        "steps": [
+          "Navigate to the Coding Shuttle Java Compiler.",
+          "Start a new project on the compiler page.",
+          "In the editor, type the following code.",
+          "Press the 'Run' or 'Compile and Execute' button.",
+          "You should see: Hello, world!"
+        ],
+        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world!\");\n    }\n}"
+      },
+      {
+        "title": "Tips for Beginners",
+        "tips": [
+          "Make sure you're using the correct Java version supported by the compiler.",
+          "Begin with simple programs to grasp syntax and logic.",
+          "Use the community for guidance — there's abundant content available online."
+        ]
+      },
+      {
+        "title": "Debugging on the Fly",
+        "steps": [
+          "Check the error messages for hints on the problem.",
+          "Insert breakpoints to inspect program flow and variable states.",
+          "Step through your code line-by-line using the debugger.",
+          "Once the bug is found, make corrections and rerun the program."
+        ]
+      },
+      {
+        "title": "Java Syntax: Loops",
+        "content": "Loops help execute a block of code repeatedly. Java supports for, while, and do-while loops.",
+        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    System.out.println(i);\n    i++;\n}\n\n// Do-while loop\ndo {\n    System.out.println(i);\n    i++;\n} while(i < 10);"
+      },
+      {
+        "title": "Java Syntax: Conditional Statements",
+        "content": "Conditional logic allows your program to make decisions using if, else if, and else.",
+        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code for false conditions\n}"
+      },
+      {
+        "title": "Java Syntax: Methods",
+        "content": "In Java, functions are known as methods and must be written inside a class. They are used to perform specific tasks.",
+        "code": "public int add(int a, int b) {\n    return a + b;\n}"
+      }
+    ]
+  },
+ {
+    "category": "Javascript",
+    "title": "Getting Started: Coding on C++ Compilers Online",
+    "sections": [
+      {
+        "title": "Why Learn C++?",
+        "list": [
+          {
+            "title": "Versatility",
+            "content": "C++ is a versatile language used in system programming, game development, web applications, and embedded systems."
+          },
+          {
+            "title": "Community and Support",
+            "content": "C++ has an active community with extensive documentation, libraries, and forums for learners and professionals alike."
+          },
+          {
+            "title": "Job Opportunities",
+            "content": "C++ developers are in demand across the tech industry, making it a valuable language to learn for career growth."
+          }
+        ]
+      },
+      {
+        "title": "Creating Your First Program",
+        "steps": [
+          "Navigate to the Coding Shuttle C++ Compiler.",
+          "Start a new project on the compiler page.",
+          "In the editor, type the following code:",
+          "Press the 'Run' or 'Compile and Execute' button to see the output.",
+          "You should see: Hello, world!"
+        ],
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    cout << \"Hello, world!\";\n    return 0;\n}"
+      },
+      {
+        "title": "Tips for Beginners",
+        "tips": [
+          "Ensure you're using the correct C++ version supported by the compiler.",
+          "Start with simple programs to get comfortable with the syntax.",
+          "Join online communities and use tutorials and documentation for help."
+        ]
+      },
+      {
+        "title": "Debugging on the Fly",
+        "steps": [
+          "Read error messages carefully to identify the issue.",
+          "Insert breakpoints to inspect variables and flow.",
+          "Step through code to trace behavior line by line.",
+          "Fix the root cause and rerun the program."
+        ]
+      },
+      {
+        "title": "C++ Syntax: Loops",
+        "content": "Loops are used to repeat a block of code. C++ supports for, while, and do-while loops.",
+        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    cout << i << \"\\n\";\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    cout << i << \"\\n\";\n    i++;\n}\n\n// Do-while loop\ndo {\n    cout << i << \"\\n\";\n    i++;\n} while(i < 10);"
+      },
+      {
+        "title": "C++ Syntax: Conditional Statements",
+        "content": "Conditional statements help make decisions in code using if, else if, and else.",
+        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code if all conditions are false\n}"
+      },
+      {
+        "title": "C++ Syntax: Functions",
+        "content": "Functions help modularize code and avoid repetition. They have a return type, name, and parameters.",
+        "code": "int add(int a, int b) {\n    return a + b;\n}"
+      }
+    ]
+  },
+  {
+    "category": "Python",
+    "title": "Getting Started: Coding on Java Compilers Online",
+    "sections": [
+      {
+        "title": "What is Java?",
+        "content": "Java is a high-level, class-based, and object-oriented programming language. With its 'Write Once, Run Anywhere' (WORA) capability, Java code can run on any system equipped with the Java Virtual Machine (JVM), offering platform independence. It's widely used for web, mobile, and enterprise applications."
+      },
+      {
+        "title": "Why Learn Java?",
+        "list": [
+          {
+            "title": "Versatility",
+            "content": "Java is used across Android development, desktop applications, web apps using Servlets/JSPs, and enterprise software."
+          },
+          {
+            "title": "Community and Support",
+            "content": "Java has a huge global developer community, offering support via forums, tutorials, and libraries."
+          },
+          {
+            "title": "Job Opportunities",
+            "content": "Java developers are consistently in demand in tech companies of all sizes, ensuring job security and growth."
+          }
+        ]
+      },
+      {
+        "title": "Creating Your First Program",
+        "steps": [
+          "Navigate to the Coding Shuttle Java Compiler.",
+          "Start a new project on the compiler page.",
+          "In the editor, type the following code.",
+          "Press the 'Run' or 'Compile and Execute' button.",
+          "You should see: Hello, world!"
+        ],
+        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world!\");\n    }\n}"
+      },
+      {
+        "title": "Tips for Beginners",
+        "tips": [
+          "Make sure you're using the correct Java version supported by the compiler.",
+          "Begin with simple programs to grasp syntax and logic.",
+          "Use the community for guidance — there's abundant content available online."
+        ]
+      },
+      {
+        "title": "Debugging on the Fly",
+        "steps": [
+          "Check the error messages for hints on the problem.",
+          "Insert breakpoints to inspect program flow and variable states.",
+          "Step through your code line-by-line using the debugger.",
+          "Once the bug is found, make corrections and rerun the program."
+        ]
+      },
+      {
+        "title": "Java Syntax: Loops",
+        "content": "Loops help execute a block of code repeatedly. Java supports for, while, and do-while loops.",
+        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    System.out.println(i);\n    i++;\n}\n\n// Do-while loop\ndo {\n    System.out.println(i);\n    i++;\n} while(i < 10);"
+      },
+      {
+        "title": "Java Syntax: Conditional Statements",
+        "content": "Conditional logic allows your program to make decisions using if, else if, and else.",
+        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code for false conditions\n}"
+      },
+      {
+        "title": "Java Syntax: Methods",
+        "content": "In Java, functions are known as methods and must be written inside a class. They are used to perform specific tasks.",
+        "code": "public int add(int a, int b) {\n    return a + b;\n}"
+      }
+    ]
+  },
+   {
+    "category": "C",
+    "title": "Getting Started: Coding on C++ Compilers Online",
+    "sections": [
+      {
+        "title": "Why Learn C++?",
+        "list": [
+          {
+            "title": "Versatility",
+            "content": "C++ is a versatile language used in system programming, game development, web applications, and embedded systems."
+          },
+          {
+            "title": "Community and Support",
+            "content": "C++ has an active community with extensive documentation, libraries, and forums for learners and professionals alike."
+          },
+          {
+            "title": "Job Opportunities",
+            "content": "C++ developers are in demand across the tech industry, making it a valuable language to learn for career growth."
+          }
+        ]
+      },
+      {
+        "title": "Creating Your First Program",
+        "steps": [
+          "Navigate to the Coding Shuttle C++ Compiler.",
+          "Start a new project on the compiler page.",
+          "In the editor, type the following code:",
+          "Press the 'Run' or 'Compile and Execute' button to see the output.",
+          "You should see: Hello, world!"
+        ],
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    cout << \"Hello, world!\";\n    return 0;\n}"
+      },
+      {
+        "title": "Tips for Beginners",
+        "tips": [
+          "Ensure you're using the correct C++ version supported by the compiler.",
+          "Start with simple programs to get comfortable with the syntax.",
+          "Join online communities and use tutorials and documentation for help."
+        ]
+      },
+      {
+        "title": "Debugging on the Fly",
+        "steps": [
+          "Read error messages carefully to identify the issue.",
+          "Insert breakpoints to inspect variables and flow.",
+          "Step through code to trace behavior line by line.",
+          "Fix the root cause and rerun the program."
+        ]
+      },
+      {
+        "title": "C++ Syntax: Loops",
+        "content": "Loops are used to repeat a block of code. C++ supports for, while, and do-while loops.",
+        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    cout << i << \"\\n\";\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    cout << i << \"\\n\";\n    i++;\n}\n\n// Do-while loop\ndo {\n    cout << i << \"\\n\";\n    i++;\n} while(i < 10);"
+      },
+      {
+        "title": "C++ Syntax: Conditional Statements",
+        "content": "Conditional statements help make decisions in code using if, else if, and else.",
+        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code if all conditions are false\n}"
+      },
+      {
+        "title": "C++ Syntax: Functions",
+        "content": "Functions help modularize code and avoid repetition. They have a return type, name, and parameters.",
+        "code": "int add(int a, int b) {\n    return a + b;\n}"
+      }
+    ]
+  }
+]

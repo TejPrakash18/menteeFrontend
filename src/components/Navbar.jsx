@@ -21,8 +21,10 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="text-xl font-bold flex items-center gap-2">
                 <img src={logo} alt="Mentee Logo" className="w-8 h-8 rounded-full" />
-                <span className="text-white text-lg font-extrabold">Mentee</span>
-            </Link>
+<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-500 text-xl font-bold  tracking-wide">
+  Mentee
+</span>
+                </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 items-center">
