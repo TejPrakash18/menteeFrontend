@@ -39,3 +39,16 @@ const getQuestionsByCategory = async (category) => {
 
 
 export const markDSAComplete = (username, title) => api.post(`/dsa/complete?username=${username}&title=${title}`);
+
+export const getCompletedQuestions = async (username) => {
+  try {
+    const response = await api.get(`/dsa/completed?username=${username}`);
+    if (Array.isArray(response.data)) {
+      return response.data;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error fetching completed questions:", error);
+    return [];
+  }
+};

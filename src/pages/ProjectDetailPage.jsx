@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProjectById, markProjectComplete } from '../services/projectService';
 import Navbar from '../components/Navbar';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -132,9 +134,24 @@ const ProjectDetailPage = () => {
                 </p>
               )}
               {project.sections[selectedSectionIndex].language ? (
-                <pre className="bg-[#0f0f0f] p-4 rounded-md overflow-x-auto text-sm font-mono whitespace-pre-wrap text-white">
+                <SyntaxHighlighter
+                  language={project.sections[selectedSectionIndex].language}
+                  style={dracula}
+                  showLineNumbers
+                  wrapLines
+                  customStyle={{
+                    backgroundColor: '#0f0f0f',
+                    borderRadius: '0.375rem',
+                    padding: '1rem',
+                    fontSize: '0.875rem',
+                    fontFamily: 'monospace',
+                    whiteSpace: 'pre-wrap',
+                    overflowX: 'auto',
+                    color: 'white',
+                  }}
+                >
                   {project.sections[selectedSectionIndex].content}
-                </pre>
+                </SyntaxHighlighter>
               ) : (
                 <p className="text-gray-300 whitespace-pre-wrap">
                   {project.sections[selectedSectionIndex].content}

@@ -23,30 +23,13 @@
       {
         "title": "Creating Your First Program",
         "steps": [
-          "Navigate to the Coding Shuttle C++ Compiler.",
+          "Navigate to the Algo Next C++ Compiler.",
           "Start a new project on the compiler page.",
           "In the editor, type the following code:",
           "Press the 'Run' or 'Compile and Execute' button to see the output.",
           "You should see: Hello, world!"
         ],
         "code": "#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    cout << \"Hello, world!\";\n    return 0;\n}"
-      },
-      {
-        "title": "Tips for Beginners",
-        "tips": [
-          "Ensure you're using the correct C++ version supported by the compiler.",
-          "Start with simple programs to get comfortable with the syntax.",
-          "Join online communities and use tutorials and documentation for help."
-        ]
-      },
-      {
-        "title": "Debugging on the Fly",
-        "steps": [
-          "Read error messages carefully to identify the issue.",
-          "Insert breakpoints to inspect variables and flow.",
-          "Step through code to trace behavior line by line.",
-          "Fix the root cause and rerun the program."
-        ]
       },
       {
         "title": "C++ Syntax: Loops",
@@ -93,30 +76,13 @@
       {
         "title": "Creating Your First Program",
         "steps": [
-          "Navigate to the Coding Shuttle Java Compiler.",
+          "Navigate to the Algo Next Java Compiler.",
           "Start a new project on the compiler page.",
           "In the editor, type the following code.",
           "Press the 'Run' or 'Compile and Execute' button.",
           "You should see: Hello, world!"
         ],
         "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world!\");\n    }\n}"
-      },
-      {
-        "title": "Tips for Beginners",
-        "tips": [
-          "Make sure you're using the correct Java version supported by the compiler.",
-          "Begin with simple programs to grasp syntax and logic.",
-          "Use the community for guidance — there's abundant content available online."
-        ]
-      },
-      {
-        "title": "Debugging on the Fly",
-        "steps": [
-          "Check the error messages for hints on the problem.",
-          "Insert breakpoints to inspect program flow and variable states.",
-          "Step through your code line-by-line using the debugger.",
-          "Once the bug is found, make corrections and rerun the program."
-        ]
       },
       {
         "title": "Java Syntax: Loops",
@@ -202,75 +168,143 @@
     ]
   },
   {
-    "category": "Python",
-    "title": "Getting Started: Coding on Java Compilers Online",
-    "sections": [
-      {
-        "title": "What is Java?",
-        "content": "Java is a high-level, class-based, and object-oriented programming language. With its 'Write Once, Run Anywhere' (WORA) capability, Java code can run on any system equipped with the Java Virtual Machine (JVM), offering platform independence. It's widely used for web, mobile, and enterprise applications."
-      },
-      {
-        "title": "Why Learn Java?",
-        "list": [
-          {
-            "title": "Versatility",
-            "content": "Java is used across Android development, desktop applications, web apps using Servlets/JSPs, and enterprise software."
-          },
-          {
-            "title": "Community and Support",
-            "content": "Java has a huge global developer community, offering support via forums, tutorials, and libraries."
-          },
-          {
-            "title": "Job Opportunities",
-            "content": "Java developers are consistently in demand in tech companies of all sizes, ensuring job security and growth."
-          }
-        ]
-      },
-      {
-        "title": "Creating Your First Program",
-        "steps": [
-          "Navigate to the Coding Shuttle Java Compiler.",
-          "Start a new project on the compiler page.",
-          "In the editor, type the following code.",
-          "Press the 'Run' or 'Compile and Execute' button.",
-          "You should see: Hello, world!"
-        ],
-        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world!\");\n    }\n}"
-      },
-      {
-        "title": "Tips for Beginners",
-        "tips": [
-          "Make sure you're using the correct Java version supported by the compiler.",
-          "Begin with simple programs to grasp syntax and logic.",
-          "Use the community for guidance — there's abundant content available online."
-        ]
-      },
-      {
-        "title": "Debugging on the Fly",
-        "steps": [
-          "Check the error messages for hints on the problem.",
-          "Insert breakpoints to inspect program flow and variable states.",
-          "Step through your code line-by-line using the debugger.",
-          "Once the bug is found, make corrections and rerun the program."
-        ]
-      },
-      {
-        "title": "Java Syntax: Loops",
-        "content": "Loops help execute a block of code repeatedly. Java supports for, while, and do-while loops.",
-        "code": "// For loop\nfor(int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n\n// While loop\nint i = 0;\nwhile(i < 10) {\n    System.out.println(i);\n    i++;\n}\n\n// Do-while loop\ndo {\n    System.out.println(i);\n    i++;\n} while(i < 10);"
-      },
-      {
-        "title": "Java Syntax: Conditional Statements",
-        "content": "Conditional logic allows your program to make decisions using if, else if, and else.",
-        "code": "if(condition) {\n    // Code for true condition\n} else if(anotherCondition) {\n    // Code for another true condition\n} else {\n    // Code for false conditions\n}"
-      },
-      {
-        "title": "Java Syntax: Methods",
-        "content": "In Java, functions are known as methods and must be written inside a class. They are used to perform specific tasks.",
-        "code": "public int add(int a, int b) {\n    return a + b;\n}"
-      }
-    ]
-  },
+  "category": "Python",
+  "title": "Python Cheat Sheet: Code and Theory",
+  "sections": [
+    {
+      "title": "Introduction to Python",
+      "list": [
+        {
+          "title": "What is Python?",
+          "content": "Python is a high-level, interpreted, general-purpose programming language known for its simplicity and readability."
+        },
+        {
+          "title": "History",
+          "content": "Created by Guido van Rossum and released in 1991."
+        },
+        {
+          "title": "Why Use Python?",
+          "content": "Python supports multiple paradigms, has a huge ecosystem of libraries, and is used in web development, data science, automation, and more."
+        }
+      ],
+      "code": "print(\"Hello, Python!\")"
+    },
+    {
+      "title": "Basic Syntax",
+      "list": [
+        {
+          "title": "Comments",
+          "content": "# This is a comment"
+        },
+        {
+          "title": "Variables",
+          "content": "x = 10\nname = \"Alice\""
+        },
+        {
+          "title": "Input/Output",
+          "content": "name = input(\"Enter your name: \")\nprint(\"Hi\", name)"
+        },
+        {
+          "title": "Indentation",
+          "content": "if x > 0:\n    print(\"Positive\")"
+        }
+      ]
+    },
+    {
+      "title": "Control Flow",
+      "sections": [
+        {
+          "title": "If-Else Statements",
+          "code": "x = 10\nif x > 0:\n    print(\"Positive\")\nelif x == 0:\n    print(\"Zero\")\nelse:\n    print(\"Negative\")"
+        },
+        {
+          "title": "Loops",
+          "code": "# For loop\nfor i in range(5):\n    print(i)\n\n# While loop\nx = 0\nwhile x < 5:\n    print(x)\n    x += 1"
+        }
+      ]
+    },
+    {
+      "title": "Data Structures",
+      "sections": [
+        {
+          "title": "Lists",
+          "code": "fruits = [\"apple\", \"banana\"]\nfruits.append(\"orange\")\nprint(fruits[1])"
+        },
+        {
+          "title": "Tuples",
+          "code": "point = (3, 4)\nprint(point[0])"
+        },
+        {
+          "title": "Sets",
+          "code": "s = {1, 2, 3}\ns.add(4)\nprint(s)"
+        },
+        {
+          "title": "Dictionaries",
+          "code": "person = {\"name\": \"Alice\", \"age\": 25}\nprint(person[\"name\"])"
+        }
+      ]
+    },
+    {
+      "title": "Functions",
+      "content": "Functions in Python are defined using the `def` keyword. They help organize code into reusable blocks.",
+      "code": "def greet(name):\n    return f\"Hello, {name}\"\n\nprint(greet(\"Tej\"))"
+    },
+    {
+      "title": "File Handling",
+      "content": "Python makes reading and writing to files simple with the `open()` function.",
+      "code": "# Writing to file\nwith open(\"file.txt\", \"w\") as f:\n    f.write(\"Hello File\")\n\n# Reading from file\nwith open(\"file.txt\", \"r\") as f:\n    content = f.read()\n    print(content)"
+    },
+    {
+      "title": "Exception Handling",
+      "content": "Use try-except blocks to handle exceptions gracefully.",
+      "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\nfinally:\n    print(\"Done\")"
+    },
+    {
+      "title": "Object-Oriented Programming",
+      "content": "Python supports OOP features like classes, inheritance, and encapsulation.",
+      "code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return f\"{self.name} makes a sound\"\n\ndog = Animal(\"Dog\")\nprint(dog.speak())"
+    },
+    {
+      "title": "List Comprehension",
+      "content": "A concise way to create lists.",
+      "code": "squares = [x**2 for x in range(5)]"
+    },
+    {
+      "title": "Modules & Packages",
+      "content": "Use `import` to bring in built-in or external modules.",
+      "code": "import math\nprint(math.sqrt(16))"
+    },
+    {
+      "title": "Virtual Environment",
+      "steps": [
+        "Run `python -m venv env` to create a virtual environment.",
+        "Activate it using `source env/bin/activate` (Linux/macOS) or `env\\Scripts\\activate` (Windows)."
+      ]
+    },
+    {
+      "title": "Pip - Package Manager",
+      "steps": [
+        "Use `pip install <package>` to install libraries."
+      ],
+      "code": "import requests\nres = requests.get(\"https://api.github.com\")\nprint(res.status_code)"
+    },
+    {
+      "title": "Testing with assert",
+      "content": "Use `assert` to write simple tests.",
+      "code": "def add(a, b):\n    return a + b\n\nassert add(2, 3) == 5"
+    },
+    {
+      "title": "Iterators & Generators",
+      "content": "Generators yield items one at a time using `yield` keyword.",
+      "code": "def countdown(n):\n    while n > 0:\n        yield n\n        n -= 1\n\nfor i in countdown(3):\n    print(i)"
+    },
+    {
+      "title": "Lambda, Map, Filter, Reduce",
+      "content": "Short anonymous functions and functional programming tools.",
+      "code": "# Lambda\nsquare = lambda x: x * x\n\n# Map\nprint(list(map(square, [1, 2, 3])))\n\n# Filter\nprint(list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4])))\n\n# Reduce\nfrom functools import reduce\nprint(reduce(lambda x, y: x + y, [1, 2, 3]))"
+    }
+  ]
+},
    {
     "category": "C",
     "title": "Getting Started: Coding on C++ Compilers Online",

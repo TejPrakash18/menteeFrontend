@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Progress from "../components/ProgressTracker";
-import { getAllDSA } from "../services/dsaService";
+import { getAllDSA, getCompletedQuestions } from "../services/dsaService";
 import { Link } from "react-router-dom";
 
 const DSAPage = () => {
   const [groupedData, setGroupedData] = useState([]);
   const [progressState, setProgressState] = useState([]);
+  const username = localStorage.getItem("username"); // assuming username is stored here
 
-  // 1. Fetch questions & group them
+  // Fetch all questions and group by category
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,57 +35,31 @@ const DSAPage = () => {
     fetchData();
   }, []);
 
-  // 2. Once groupedData loaded, set or load progressState
+  // Fetch completed questions and initialize progressState accordingly
   useEffect(() => {
-    if (groupedData.length === 0) return;
+    if (!username || groupedData.length === 0) return;
 
-    const savedProgress = localStorage.getItem("dsaProgress");
-
-    if (savedProgress) {
-      // Load progress from localStorage only if it matches current groupedData length
+    const initializeProgress = async () => {
       try {
-        const parsed = JSON.parse(savedProgress);
-        if (parsed.length === groupedData.length) {
-          setProgressState(parsed);
-          return;
-        }
-      } catch {
-        // ignore parsing errors, fallback to fresh init below
+        const completedTitles = await getCompletedQuestions(username);
+
+        // Map completed question titles for quick lookup
+        const completedSet = new Set(completedTitles);
+
+        // Initialize progress state with checked flags based on completed questions
+        const initialProgress = groupedData.map(cat => ({
+          open: false,
+          checked: cat.questions.map(q => completedSet.has(q.title)),
+        }));
+
+        setProgressState(initialProgress);
+      } catch (error) {
+        console.error("Error fetching completed questions:", error);
       }
-    }
+    };
 
-    // If no saved or mismatch, init progressState fresh
-    const initialProgress = groupedData.map(cat => ({
-      open: false,
-      checked: Array(cat.questions.length).fill(false),
-    }));
-
-    setProgressState(initialProgress);
-  }, [groupedData]);
-
-  // 3. Save progressState to localStorage when it changes
-  useEffect(() => {
-    if (progressState.length > 0) {
-      localStorage.setItem("dsaProgress", JSON.stringify(progressState));
-    }
-  }, [progressState]);
-
-  const toggleOpen = (index) => {
-    setProgressState(prev =>
-      prev.map((c, i) => i === index ? { ...c, open: !c.open } : c)
-    );
-  };
-
-  const toggleCheckbox = (catIndex, qIndex) => {
-    setProgressState(prev =>
-      prev.map((c, i) => {
-        if (i !== catIndex) return c;
-        const newChecked = [...c.checked];
-        newChecked[qIndex] = !newChecked[qIndex];
-        return { ...c, checked: newChecked };
-      })
-    );
-  };
+    initializeProgress();
+  }, [username, groupedData]);
 
   if (groupedData.length === 0 || progressState.length === 0) {
     return (
@@ -96,6 +71,12 @@ const DSAPage = () => {
       </>
     );
   }
+
+  const toggleOpen = (index) => {
+    setProgressState(prev =>
+      prev.map((c, i) => i === index ? { ...c, open: !c.open } : c)
+    );
+  };
 
   return (
     <>
@@ -125,7 +106,7 @@ const DSAPage = () => {
                         <input
                           type="checkbox"
                           checked={progressState[catIndex].checked[qIndex]}
-                          onChange={() => toggleCheckbox(catIndex, qIndex)}
+                          disabled={true} // disable checkbox so user cannot toggle manually
                           className="accent-green-500"
                         />
                         <span>

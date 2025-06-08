@@ -5,6 +5,8 @@ import Editor from "@monaco-editor/react";
 import axios from "axios";
 import { FaJava, FaJs, FaPython } from 'react-icons/fa';
 import { SiCplusplus, SiC } from 'react-icons/si';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import notes from "../data/notes.json";
 
@@ -232,7 +234,7 @@ const CompilerPage = () => {
 
       {/* Notes Section */}
       {currentNotes && (
-        <div className="bg-gray-900 text-gray-100 rounded-xl shadow-lg my-6 mx-4 md:mx-20 p-6">
+        <div className="bg-[#0f1117] text-gray-100 rounded-xl shadow-lg my-6 mx-4 md:mx-20 p-6">
           <h2 className="text-3xl font-bold mb-6 border-b border-gray-700 pb-2">
             {currentNotes.title}
           </h2>
@@ -263,14 +265,16 @@ const CompilerPage = () => {
               )}
 
 {section.code?.trim() && (
-  <pre className="mt-4 bg-gray-800 p-4 rounded text-sm overflow-x-auto font-mono text-green-400 whitespace-pre-wrap">
-    <code>{section.code}</code>
-  </pre>
+  <div className="mt-4 rounded overflow-x-auto text-sm">
+    <SyntaxHighlighter language="java" style={dracula} customStyle={{ padding: '1rem', borderRadius: '0.5rem' }}>
+      {section.code}
+    </SyntaxHighlighter>
+  </div>
 )}
 
 
               {section.tips && (
-                <ul className="list-disc list-inside mt-3 text-green-400 space-y-1">
+                <ul className="list-disc list-inside mt-3 text-gray-400 space-y-1">
                   {section.tips.map((tip, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <span>💡</span> {tip}

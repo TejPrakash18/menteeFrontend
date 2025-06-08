@@ -18,7 +18,7 @@
             {/* Brand */}
             <div className="max-w-md space-y-5">
               <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-500 text-xl font-bold  tracking-wide animate-pulse">
-                mentee
+                Mentee
               </h1>
               <p className="text-sm text-gray-400">
                 Your one-stop platform for mastering DSA, interview prep, and real-world dev projects — free, forever.
@@ -103,7 +103,7 @@
 
             {/* Bottom Text */}
             <div className="mt-10 text-center text-xs text-gray-500">
-              © 2025 <span className="text-white font-semibold">mentee</span>. All righ ts reserved.
+              © 2025 <span className="text-white font-semibold">Mentee</span>. All righ ts reserved.
             </div>
           
 
