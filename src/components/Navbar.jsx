@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
-import logo from '../assets/algonext.png';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -31,12 +31,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-[#1D1C20] rounded-xl text-white px-6 py-3 flex items-center justify-between mx-20 relative">
+    <nav className="bg-[#1D1C20] rounded-md text-white px-6 py-2 flex items-center justify-between mx-20 relative">
       {/* Logo */}
       <Link to="/" className="text-xl font-bold flex items-center gap-2">
-        <img src={logo} alt="Mentee Logo" className="w-10 h-10" />
+        <img src={logo} alt="Mentee Logo" className="w-10 h-10 rounded-full" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-500 text-xl font-bold tracking-wide">
-          Mentee
+          MENTEE
         </span>
       </Link>
 
@@ -90,16 +90,16 @@ const Navbar = () => {
               onClick={() => setIsProfileOpen((prev) => !prev)}
               className="p-1 rounded-full hover:bg-gray-700 transition"
               aria-label="User menu"
-              title="User menu"
+              title="User Profile"
             >
-              <FaUserCircle size={28} className="text-orange-400" />
+              <FaUserCircle size={30} className="text-orange-400" />
             </button>
 
             {/* Dropdown menu */}
             {isProfileOpen && (
               <div
-                className="absolute right-0  mt-45 w-44 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-lg shadow-2xl
-               ring-1 ring-black ring-opacity-5
+                className="absolute right-0  mt-45 w-44 bg-gradient-to-br from-[#2A2B30] to-[#1D1C20] rounded-lg shadow-2xl
+               ring-1 ring-[#2A2B30] ring-opacity-5
                transform origin-top-right scale-100 opacity-100
                transition ease-out duration-200 z-50"
               >
@@ -149,7 +149,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-16 left-0 w-full bg-[#1D1C20]  text-white rounded-xl shadow-xl transition-all duration-300 ${
+        className={`md:hidden absolute top-16 left-0 w-full bg-[#1D1C20]  text-white rounded shadow-xl transition-all duration-300 ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 overflow-hidden opacity-0'
         }`}
       >

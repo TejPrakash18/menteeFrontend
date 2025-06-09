@@ -56,7 +56,7 @@ const ProgressBar = () => {
     const totalSolved = solvedBasic + solvedMedium + solvedEasy;
 
     return (
-        <div className="bg-[#1D1C20] text-white lg:h-115 p-4 sm:p-6 md:p-10 font-sans mt-6 rounded-2xl w-full">
+        <div className="bg-[#1D1C20] text-white lg:h-115 p-4 sm:p-6 md:p-10 font-sans mt-6 rounded-md w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* DSA Progress */}
                 <div className="bg-[#2A2B30] rounded-lg p-6 shadow">
@@ -129,9 +129,6 @@ const ProgressBar = () => {
                             }}
                         ></div>
                     </div>
-                    <p className="text-sm mt-1 text-right">
-                        {calcPercentage(progress.projects.completed, progress.projects.total)}% completed
-                    </p>
                 </div>
             </div>
 

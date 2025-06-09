@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getProjectById, markProjectComplete } from '../services/projectService';
 import Navbar from '../components/Navbar';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -7,6 +7,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [completed, setCompleted] = useState(false);
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
@@ -20,10 +21,21 @@ const ProjectDetailPage = () => {
         const data = Array.isArray(res.data) ? res.data[0] : res.data;
         setProject(data);
 
+        // If project is already completed, setCompleted true
+        if(data.progress === 100) {
+          setCompleted(true);
+        }
+
+        // Find all code section indices (those having language)
         const codeIndices = data.sections
-          ?.map((s, index) => (s.language ? index : null))
+          ?.map((section, index) => (section.language ? index : null))
           .filter(index => index !== null);
         setCodeSectionIndices(codeIndices);
+
+        // Automatically mark first section visited if it's a code section (optional)
+        if (codeIndices.includes(0)) {
+          setVisitedCodeSections(new Set([0]));
+        }
       })
       .catch(err => console.error(err));
   }, [id]);
@@ -32,21 +44,29 @@ const ProjectDetailPage = () => {
     section.title.toLowerCase().includes('conclusion')
   );
 
+  // Check if ALL code sections are visited
   const allCodeSectionsVisited =
-    codeSectionIndices.length > 1 &&
+    codeSectionIndices.length > 0 &&
     codeSectionIndices.every(index => visitedCodeSections.has(index));
+
+  // Show Mark as Complete only if on conclusion section AND all code sections visited AND not completed already
+  const canMarkComplete = selectedSectionIndex === conclusionIndex && allCodeSectionsVisited && !completed;
 
   const handleTopicClick = (index) => {
     setSelectedSectionIndex(index);
 
     const section = project.sections?.[index];
-    if (section?.language && !visitedCodeSections.has(index)) {
-      setVisitedCodeSections(prev => new Set(prev).add(index));
+    if (section?.language) {
+      setVisitedCodeSections(prev => {
+        const updated = new Set(prev);
+        updated.add(index);
+        return updated;
+      });
     }
 
     setTimeout(() => {
       sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 1000);
+    }, 300);
   };
 
   const handleMarkComplete = async () => {
@@ -63,6 +83,8 @@ const ProjectDetailPage = () => {
       await markProjectComplete(username, project.projectTitle);
       alert('Marked as Complete!');
       setCompleted(true);
+      // Optionally update project progress to 100 locally for immediate UI feedback
+      setProject(prev => ({ ...prev, progress: 100 }));
     } catch (err) {
       console.error(err);
       alert('Failed to mark as complete. Try again.');
@@ -81,7 +103,7 @@ const ProjectDetailPage = () => {
     <>
       <Navbar />
       <div className="flex min-h-screen p-15 rounded-2xl">
-        <aside className="w-64 h-160 bg-[#1e1e22] p-4 rounded-2xl">
+        <aside className="w-64 h-160 bg-[#1e1e22] p-4 rounded-md">
           <h2 className="text-lg font-bold mb-4 text-orange-400 m-5 rounded-2xl">Documentation</h2>
           <ul className="space-y-2">
             {project.sections?.map((section, idx) => (
@@ -101,8 +123,8 @@ const ProjectDetailPage = () => {
           </ul>
         </aside>
 
-        <main className="flex-1 p-6 space-y-6 bg-[#1e1e22] rounded-2xl ml-10">
-          <header className="bg-blue-400 p-6 rounded-xl shadow-lg text-white">
+        <main className="flex-1 p-6 space-y-6 bg-[#1e1e22] rounded-md ml-10">
+          <header className="bg-blue-400 p-6 rounded-md shadow-lg text-white">
             <h1 className="text-2xl font-bold">{project.projectTitle}</h1>
             <p className="mt-2">{project.description}</p>
           </header>
@@ -123,7 +145,7 @@ const ProjectDetailPage = () => {
             <section
               key={selectedSectionIndex}
               ref={el => (sectionRefs.current[selectedSectionIndex] = el)}
-              className="bg-[#2c2c2e] p-6 rounded-lg shadow-md"
+              className="bg-[#2c2c2e] p-6 rounded-md shadow-md"
             >
               <h2 className="text-2xl font-bold text-orange-400 mb-3">
                 {project.sections[selectedSectionIndex].title}
@@ -158,7 +180,7 @@ const ProjectDetailPage = () => {
                 </p>
               )}
 
-              {selectedSectionIndex === conclusionIndex && allCodeSectionsVisited && (
+              {canMarkComplete && (
                 <div className="flex justify-center mt-10">
                   <button
                     onClick={handleMarkComplete}

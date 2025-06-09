@@ -53,7 +53,7 @@ const SidebarProfile = () => {
     if (!profile) return <p className="text-white p-5">Loading profile...</p>;
 
     return (
-        <div className="bg-[#1D1C20] text-white lg:w-100 lg:h-115  p-6 mt-5 rounded-2xl shadow-md">
+        <div className="bg-[#1D1C20] text-white lg:w-100 lg:h-115  p-5 mt-6 rounded-md shadow-md">
             {/* Profile Header */}
             <div className="flex items-center gap-4 mb-6">
                 <img
@@ -67,7 +67,7 @@ const SidebarProfile = () => {
                 />
                 <div>
                     <h2 className="text-lg font-bold">{profile.name}</h2>
-                    <p className="text-sm text-gray-400">@{profile.username}</p>
+                    <p className="text-sm text-gray-400">{profile.username}</p>
                 </div>
             </div>
 
@@ -78,7 +78,7 @@ const SidebarProfile = () => {
                     {(profile.skills || []).map((skill, idx) => (
                         <span
                             key={idx}
-                            className="bg-[#2A2B30] px-3 py-1 text-xs rounded-full whitespace-nowrap"
+                            className="bg-blue-400 px-3 py-1 text-xs rounded whitespace-nowrap"
                         >
                             {skill}
                         </span>

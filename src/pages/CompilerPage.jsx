@@ -157,7 +157,7 @@ const CompilerPage = () => {
   return (
     <>
       <Navbar />
-      <div className="h-[calc(95vh-4rem)] bg-[#0f1117] text-white rounded-2xl mt-3 mx-4 md:mx-20 flex flex-col shadow-lg overflow-hidden">
+      <div className="h-[calc(95vh-4rem)] bg-[#0f1117] text-white rounded mt-3 mx-4 md:mx-20 flex flex-col shadow-lg overflow-hidden">
         <div className="flex bg-[#161821] px-4 py-2 space-x-3 items-center border-b border-gray-700 overflow-x-auto">
           {compilers.map((c) => (
             <button
@@ -167,7 +167,7 @@ const CompilerPage = () => {
                 setCode(defaultCodeMap[c.id]);
                 setOutputText('');
               }}
-              className={`flex items-center gap-1 px-3 py-1 rounded-md text-sm transition-all duration-200 ${
+              className={`flex items-center gap-1 px-3 py-1 rounded text-sm transition-all duration-200 ${
                 selectedCompiler === c.id ? 'bg-blue-600' : 'hover:bg-blue-500'
               }`}
               title={c.name}
@@ -180,7 +180,7 @@ const CompilerPage = () => {
 
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden p-3 gap-3">
           {/* Editor */}
-          <div className="flex-1 flex flex-col bg-[#1a1b26] rounded-xl p-4 shadow-md min-h-0">
+          <div className="flex-1 flex flex-col bg-[#1a1b26] rounded p-4 shadow-md min-h-0">
             <div className="flex justify-between items-center mb-2">
               <h2 className="text-lg font-bold">{currentCompiler?.name} Editor</h2>
               <div className="space-x-2">
@@ -222,7 +222,7 @@ const CompilerPage = () => {
               />
             </div>
 
-            <div className="flex-1 bg-[#1a1b26] p-4 rounded-xl shadow-sm flex flex-col">
+            <div className="flex-1 bg-[#1a1b26] p-4 rounded shadow-sm flex flex-col">
               <h3 className="text-md font-semibold mb-2">Output</h3>
               <pre className="flex-1 bg-[#0f1117] text-green-400 p-2 rounded overflow-y-auto text-sm whitespace-pre-wrap border border-gray-700">
                 {isLoading ? "Running..." : outputText || "Your output will appear here..."}
@@ -234,7 +234,7 @@ const CompilerPage = () => {
 
       {/* Notes Section */}
       {currentNotes && (
-        <div className="bg-[#0f1117] text-gray-100 rounded-xl shadow-lg my-6 mx-4 md:mx-20 p-6">
+        <div className="bg-[#0f1117] text-gray-100 rounded shadow-lg my-6 mx-4 md:mx-20 p-6">
           <h2 className="text-3xl font-bold mb-6 border-b border-gray-700 pb-2">
             {currentNotes.title}
           </h2>

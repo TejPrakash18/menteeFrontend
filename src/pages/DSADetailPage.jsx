@@ -201,7 +201,7 @@
         <div className="flex flex-col md:flex-row min-h-screen bg-[#0f0f0f] text-white overflow-hidden p-4 md:p-6 rounded-2xl mx-2 md:mx-10 mt-4 gap-4">
 
           {/* Left Panel */}
-          <div className="w-full md:w-[40%] p-4 bg-[#1e1e22] border border-gray-700 rounded-xl overflow-y-auto h-[95vh]">
+          <div className="w-full md:w-[40%] p-4 bg-[#1e1e22] border border-gray-700 rounded-xl overflow-y-auto h-[90vh]">
             {question ? (
               <>
                 <h1 className="text-2xl font-bold text-orange-400 mb-2">{question.title}</h1>
