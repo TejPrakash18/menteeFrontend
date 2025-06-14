@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.Toastify__toast {
+  width: 300px;
+  height: auto;           /* or fixed like 60px */
+  min-height: 50px;
+  font-size: 14px;
+}

@@ -13,29 +13,41 @@ const icons = [GrNotes, MdQuiz, FaPortrait, RiMovie2Fill, FaUserTie, FaBook];
 
 const Project = () => {
   const [projects, setProjects] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const username = localStorage.getItem('username');
-    if (!username) return;
+    const loggedIn = !!username;
+    setIsLoggedIn(loggedIn);
 
-    Promise.all([getAllProjects(), getCompletedProjects(username)])
-      .then(([allRes, completedRes]) => {
-        const allProjects = allRes.data;
-        const completedProjects = completedRes.data; // This is array of strings, e.g. ["Quiz App", "Notes App"]
+    if (loggedIn) {
+      Promise.all([getAllProjects(), getCompletedProjects(username)])
+        .then(([allRes, completedRes]) => {
+          const allProjects = allRes.data;
+          const completedProjects = completedRes.data;
+          const completedTitles = new Set(completedProjects);
 
-        // Fix here: completedProjects is an array of strings (titles), so use directly:
-        const completedTitles = new Set(completedProjects);
+          const projectsWithProgress = allProjects.map(proj => ({
+            ...proj,
+            progress: completedTitles.has(proj.projectTitle) ? 100 : 0,
+          }));
 
-        // Map all projects and add progress based on completion
-        const projectsWithProgress = allProjects.map(proj => ({
-          ...proj,
-          progress: completedTitles.has(proj.projectTitle) ? 100 : 0,
-        }));
-
-        setProjects(projectsWithProgress);
-      })
-      .catch(err => console.error(err));
+          setProjects(projectsWithProgress);
+        })
+        .catch(err => console.error(err));
+    } else {
+      getAllProjects()
+        .then(res => {
+          const allProjects = res.data;
+          const projectsWithoutProgress = allProjects.map(proj => ({
+            ...proj,
+            progress: null,
+          }));
+          setProjects(projectsWithoutProgress);
+        })
+        .catch(err => console.error(err));
+    }
   }, []);
 
   const handleClick = (id) => {
@@ -54,7 +66,7 @@ const Project = () => {
                 title={proj.projectTitle}
                 icon={Icon}
                 iconBg="bg-indigo-400"
-                progress={proj.progress}
+                progress={isLoggedIn ? proj.progress : null}
               />
             </div>
           );

@@ -3,10 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.png';
+import {toast} from "react-toastify";
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { isLoggedIn, username, logoutUser } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: 'DSA', to: '/DSA' },
     { name: 'Projects', to: '/projects' },
   ];
+  const navigate = useNavigate();
 
   // Close profile dropdown on outside click
   useEffect(() => {
@@ -36,7 +37,7 @@ const Navbar = () => {
       <Link to="/" className="text-xl font-bold flex items-center gap-2">
         <img src={logo} alt="Mentee Logo" className="w-10 h-10 rounded-full" />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-500 text-xl font-bold tracking-wide">
-          MENTEE
+          Mentee
         </span>
       </Link>
 
@@ -122,6 +123,8 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     logoutUser();
+                    toast.success("Logout Successfully");
+                    navigate('/')
                     setIsProfileOpen(false);
                     setIsMenuOpen(false);
                   }}
@@ -183,6 +186,8 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     logoutUser();
+                    toast.success("Logout Successfully");
+                    navigate('/')
                     setIsMenuOpen(false);
                   }}
                   className="text-red-400 font-semibold hover:underline"

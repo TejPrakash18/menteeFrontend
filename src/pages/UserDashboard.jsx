@@ -2,6 +2,7 @@ import SidebarProfile from '../components/SidebarProfile';
 import ProgressBar from "../components/ProgressBar";
 import Navbar from '../components/Navbar';
 
+
 const DashboardPage = () => {
     return (
         <>

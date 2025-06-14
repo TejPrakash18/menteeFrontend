@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from '../context/AuthContext';
-import authService from '../services/authService'; // ✅ FIXED
+import authService from '../services/authService'; 
+import {toast} from "react-toastify";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -13,12 +14,14 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await authService.login(username, password); // ✅ FIXED
+      const data = await authService.login(username, password); 
       loginUser(data.token);
       navigate('/');
+      toast.success("Login Successful")
     } catch (err) {
-      setError("Invalid credentials or server error.");
+      toast.error("login field")
       console.error("Error during login:", err);
+      
     }
   };
 
