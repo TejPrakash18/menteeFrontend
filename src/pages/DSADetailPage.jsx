@@ -6,6 +6,7 @@
   import Navbar from '../components/Navbar';
 
   import Footer from '../components/Footer';
+import { toast } from 'sonner';
 
   const compilers = [
     { name: 'Java', id: 'java', language: 'java', judge0_id: 62 },
@@ -82,17 +83,20 @@
       const username = localStorage.getItem('username');
 
       if (!username) {
-        alert('You must be logged in to submit. Please log in.');
+        // alert('You must be logged in to submit. Please log in.');
+        toast.warning("you must be logged in to submit. Please log in.")
         return;
       }
 
       if (!question || !question.title) {
-        alert('Question not loaded yet.');
+        // alert('Question not loaded yet.');
+        toast.warning("Question not loaded yet.")
         return;
       }
 
       if (!outputText) {
-        alert("Please run your code first.");
+        // alert("Please run your code first.");
+        toast.warning("Please run your code first")
         return;
       }
 
@@ -102,15 +106,18 @@
       if (cleanedOutput === expectedOutput) {
         markDSAComplete(username, question.title)
           .then(() => {
-            alert('Question marked as complete!');
+            // alert('Question marked as complete!');
+            toast.success("Question marked as complete!")
             setIsCompleted(true);
           })
           .catch(err => {
             console.error(err);
-            alert('Error marking as complete.');
+            // alert('Error marking as complete.');
+            toast.warning("Error marking as complete.")
           });
       } else {
-        alert(`Your output doesn't match the expected output.\nExpected: ${expectedOutput}\nGot: ${cleanedOutput}`);
+        // alert(`Your output doesn't match the expected output.\nExpected: ${expectedOutput}\nGot: ${cleanedOutput}`);
+        toast.warning(`Your output doesn't match the expected output.\nExpected: ${expectedOutput}\nGot: ${cleanedOutput}`)
       }
     };
 

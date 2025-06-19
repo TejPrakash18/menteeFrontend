@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
-.Toastify__toast {
-  width: 300px;
-  height: auto;           /* or fixed like 60px */
-  min-height: 50px;
-  font-size: 14px;
+@keyframes progress-bar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-progress-bar {
+  animation: progress-bar 2s linear forwards; /* duration must match <Toaster duration={} */
 }

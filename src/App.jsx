@@ -1,6 +1,5 @@
 import './App.css';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "sonner";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -21,20 +20,25 @@ import PrivateRoute from './routes/PrivateRoute';
 import ForgotPassword from './pages/ForgotPassword';
 import FAQPage from './pages/FAQPage'
 import TrustedCompanies from './components/TrustedCompanies';
-// import AuthForm from './pages/AuthForm';
 
 
 function App() {
     return (
         <>
-        <ToastContainer
-        position="top-center" autoClose={2000}
-        toastStyle={{ width: '250px', minHeight: '30px' }}
+        <Toaster
+        position="bottom-left" duration={2000}
+        closeButton toastOptions={{
+            style: {
+            width: '250px', 
+            minHeight: '40px', 
+            padding: '14px',    
+            fontSize: '14px',
+            },
+        }}
       />
         <div className="min-h-screen bg-black pt-6">
             {/* Define the Routes for different components */}
             <Routes>
-                {/* <Route path="/auth" element = {<AuthForm/>}/> */}
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path ="/forgot-password" element={<ForgotPassword/>} />             

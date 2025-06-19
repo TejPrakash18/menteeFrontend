@@ -4,6 +4,7 @@ import { getProjectById, markProjectComplete } from '../services/projectService'
 import Navbar from '../components/Navbar';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { toast } from 'sonner';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -72,22 +73,26 @@ const ProjectDetailPage = () => {
   const handleMarkComplete = async () => {
     const username = localStorage.getItem('username');
     if (!username || username === 'undefined') {
-      alert('User not logged in.');
+      // alert('User not logged in.');
+      toast.warning("User not logged in");
       return;
     }
     if (!project || !project.projectTitle) {
-      alert('Project data not loaded.');
+      // alert('Project data not loaded.');
+      toast.warning("project data not loaded");
       return;
     }
     try {
       await markProjectComplete(username, project.projectTitle);
-      alert('Marked as Complete!');
+      // alert('Marked as Complete!');
+      toast.success("Marked as Complete!");
       setCompleted(true);
       // Optionally update project progress to 100 locally for immediate UI feedback
       setProject(prev => ({ ...prev, progress: 100 }));
     } catch (err) {
       console.error(err);
-      alert('Failed to mark as complete. Try again.');
+      // alert('Failed to mark as complete. Try again.');
+      toast.warning("Failed to mark as complete. Try again.");
     }
   };
 

@@ -7,6 +7,7 @@ import { FaJava, FaJs, FaPython } from 'react-icons/fa';
 import { SiCplusplus, SiC } from 'react-icons/si';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { toast } from 'sonner';
 
 import notes from "../data/notes.json";
 
@@ -139,6 +140,7 @@ const CompilerPage = () => {
           const writable = await handle.createWritable();
           await writable.write(code);
           await writable.close();
+          toast.success("program saved successfully")
         } catch (err) {
           console.error("Save cancelled or failed:", err);
         }

@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from '../context/AuthContext';
 import authService from '../services/authService'; 
-import {toast} from "react-toastify";
+import { toast } from 'sonner'; 
+
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -17,7 +18,14 @@ const LoginPage = () => {
       const data = await authService.login(username, password); 
       loginUser(data.token);
       navigate('/');
-      toast.success("Login Successful")
+      toast.success(
+      <div>
+        Login Successful
+        <div className="mt-4 h-[5px] w-full bg-white rounded overflow-hidden relative">
+          <div className="absolute top-0 left-0 h-full bg-green-400 animate-progress-bar"></div>
+        </div>
+      </div>
+    );
     } catch (err) {
       toast.error("login field")
       console.error("Error during login:", err);

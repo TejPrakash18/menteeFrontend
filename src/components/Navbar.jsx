@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.png';
-import {toast} from "react-toastify";
+import { toast } from 'sonner'; 
 
 const Navbar = () => {
   const location = useLocation();
